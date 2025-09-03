@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useScrollToSection } from '@/hooks/use-scroll-to-section';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -11,11 +11,30 @@ const SideNavigation: React.FC = () => {
     { id: 'hero', icon: 'fas fa-home', title: 'Home' },
     { id: 'about', icon: 'fas fa-user', title: 'About' },
     { id: 'skills', icon: 'fas fa-code', title: 'Skills' },
-    { id: 'portfolio', icon: 'fas fa-briefcase', title: 'Portfolio' },
-    { id: 'projects', icon: 'fas fa-folder-open', title: 'Projects' },
+    { id: 'portfolio', icon: 'fas fa-briefcase', title: 'Projects' },
     { id: 'blog', icon: 'fas fa-blog', title: 'Blog' },
     { id: 'contact', icon: 'fas fa-envelope', title: 'Contact' },
   ];
+
+  // Active section detection based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navigationItems.map(item => item.id);
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (sectionId: string) => {
     setActiveSection(sectionId);
