@@ -1,6 +1,4 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { fetchGitHubRepositories } from '@/lib/github-api';
 
 interface Project {
   name: string;
@@ -8,110 +6,67 @@ interface Project {
   icon: string;
   color: string;
   tags: string[];
+  image: string;
+  githubUrl: string;
 }
 
 const ProjectsSection: React.FC = () => {
-  const { data: repositories, isLoading, error } = useQuery({
-    queryKey: ['github-repositories', 'AjiteshSinha17'],
-    queryFn: () => fetchGitHubRepositories('AjiteshSinha17'),
-  });
-
-  const projectMeta: Record<string, Project> = {
-    'shopping-app': {
+  const projects: Project[] = [
+    {
       name: 'Shopping App',
       description: 'Full-featured grocery shopping app with cart functionality and secure checkout.',
       icon: 'fas fa-shopping-cart',
       color: 'from-blue-600 to-purple-600',
-      tags: ['Flutter', 'Firebase']
+      tags: ['Flutter', 'Firebase'],
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=600&fit=crop&crop=center',
+      githubUrl: 'https://github.com/AjiteshSinha17/shopping-app'
     },
-    'recipe-app': {
+    {
       name: 'Recipe App',
       description: 'Discover and cook delicious recipes with step-by-step instructions and ingredients.',
       icon: 'fas fa-utensils',
       color: 'from-orange-600 to-red-600',
-      tags: ['Flutter', 'API']
+      tags: ['Flutter', 'API'],
+      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop&crop=center',
+      githubUrl: 'https://github.com/AjiteshSinha17/recipe-app'
     },
-    'expense-tracker': {
+    {
       name: 'Expense Tracker',
       description: 'Track your expenses, set budgets, and analyze spending patterns with beautiful charts.',
       icon: 'fas fa-chart-line',
       color: 'from-green-600 to-emerald-600',
-      tags: ['Flutter', 'SQLite']
+      tags: ['Flutter', 'SQLite'],
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=600&fit=crop&crop=center',
+      githubUrl: 'https://github.com/AjiteshSinha17/expense-tracker'
     },
-    'face-recognition': {
+    {
       name: 'Face Recognition',
       description: 'AI-powered face detection and recognition system with real-time processing.',
       icon: 'fas fa-user-check',
       color: 'from-purple-600 to-pink-600',
-      tags: ['Python', 'OpenCV']
+      tags: ['Python', 'OpenCV'],
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=600&fit=crop&crop=center',
+      githubUrl: 'https://github.com/AjiteshSinha17/face-recognition'
     },
-    'quiz-app': {
+    {
       name: 'Quiz App',
       description: 'Interactive quiz application with scoring, categories, and progress tracking.',
       icon: 'fas fa-question-circle',
       color: 'from-indigo-600 to-blue-600',
-      tags: ['Flutter', 'Dart']
+      tags: ['Flutter', 'Dart'],
+      image: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=600&fit=crop&crop=center',
+      githubUrl: 'https://github.com/AjiteshSinha17/quiz-app'
     },
-    'bagify-app': {
+    {
       name: 'Bagify App',
       description: 'E-commerce solution for bag and accessories shopping with modern UI.',
       icon: 'fas fa-shopping-bag',
       color: 'from-yellow-600 to-orange-600',
-      tags: ['Flutter', 'UI/UX']
+      tags: ['Flutter', 'UI/UX'],
+      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=600&fit=crop&crop=center',
+      githubUrl: 'https://github.com/AjiteshSinha17/bagify-app'
     }
-  };
-
-  if (isLoading) {
-    return (
-      <section id="portfolio" className="py-20 relative">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              My <span className="text-primary">Portfolio</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Showcase of my mobile applications built with Flutter, featuring real-world solutions 
-              and innovative user experiences.
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-3 gap-8">
-            {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="glassmorphism rounded-2xl p-6 animate-pulse">
-                <div className="bg-muted rounded-3xl p-4 mb-6 h-64"></div>
-                <div className="h-6 bg-muted rounded mb-2"></div>
-                <div className="h-4 bg-muted rounded mb-4"></div>
-                <div className="flex space-x-2">
-                  <div className="h-6 w-16 bg-muted rounded-full"></div>
-                  <div className="h-6 w-16 bg-muted rounded-full"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="portfolio" className="py-20 relative">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              My <span className="text-primary">Portfolio</span>
-            </h2>
-            <p className="text-lg text-red-500">
-              Unable to load projects at this time. Please try again later.
-            </p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  const featuredProjects = repositories?.filter(repo => 
-    Object.keys(projectMeta).includes(repo.name)
-  ).slice(0, 6) || [];
+  ];
 
   return (
     <section id="portfolio" className="py-20 relative">
@@ -127,35 +82,90 @@ const ProjectsSection: React.FC = () => {
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8">
-          {featuredProjects.map((repo) => {
-            const meta = projectMeta[repo.name];
-            return (
-              <div 
-                key={repo.id}
-                className="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300 phone-mockup"
-                data-testid={`project-${repo.name}`}
-              >
-                <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-4 mb-6 phone-screen">
-                  <div className="bg-black rounded-2xl p-2 h-64 relative overflow-hidden">
-                    <div className={`w-full h-full bg-gradient-to-b ${meta.color} rounded-xl flex items-center justify-center`}>
+          {projects.map((project, index) => (
+            <div 
+              key={index}
+              className="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300 phone-mockup group"
+              data-testid={`project-${project.name.toLowerCase().replace(' ', '-')}`}
+            >
+              {/* Phone Mockup */}
+              <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-4 mb-6 phone-screen">
+                {/* Phone Notch */}
+                <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-600 rounded-full"></div>
+                
+                {/* Phone Screen */}
+                <div className="bg-black rounded-2xl p-2 h-64 relative overflow-hidden mt-4">
+                  <div className="w-full h-full rounded-xl overflow-hidden relative">
+                    <img 
+                      src={project.image} 
+                      alt={project.name}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      onError={(e) => {
+                        // Fallback to gradient if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.style.display = 'flex';
+                      }}
+                    />
+                    {/* Fallback gradient */}
+                    <div 
+                      className={`absolute inset-0 bg-gradient-to-b ${project.color} rounded-xl items-center justify-center hidden`}
+                    >
                       <div className="text-center text-white">
-                        <i className={`${meta.icon} text-4xl mb-2`}></i>
-                        <p className="text-sm">{meta.name}</p>
+                        <i className={`${project.icon} text-4xl mb-2`}></i>
+                        <p className="text-sm font-semibold">{project.name}</p>
+                      </div>
+                    </div>
+                    
+                    {/* App UI Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-2 left-2 right-2">
+                      <div className="flex items-center justify-between text-white">
+                        <div className="flex items-center space-x-1">
+                          <i className={`${project.icon} text-sm`}></i>
+                          <span className="text-xs font-medium">{project.name}</span>
+                        </div>
+                        <div className="flex space-x-1">
+                          <div className="w-1 h-1 bg-white rounded-full"></div>
+                          <div className="w-1 h-1 bg-white/50 rounded-full"></div>
+                          <div className="w-1 h-1 bg-white/30 rounded-full"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">{meta.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {repo.description || meta.description}
+                
+                {/* Phone Home Indicator */}
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gray-600 rounded-full"></div>
+              </div>
+
+              {/* Project Info */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-semibold text-foreground">{project.name}</h3>
+                  <a 
+                    href={project.githubUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    data-testid={`link-${project.name.toLowerCase().replace(' ', '-')}`}
+                  >
+                    <i className="fab fa-github text-lg"></i>
+                  </a>
+                </div>
+                
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {project.description}
                 </p>
-                <div className="flex space-x-2">
-                  {meta.tags.map((tag, index) => (
+                
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIndex) => (
                     <span 
-                      key={index}
-                      className={`px-3 py-1 rounded-full text-xs ${
-                        index === 0 ? 'bg-primary/20 text-primary' : 
-                        index === 1 ? 'bg-secondary/20 text-secondary' : 
+                      key={tagIndex}
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        tagIndex === 0 ? 'bg-primary/20 text-primary' : 
+                        tagIndex === 1 ? 'bg-secondary/20 text-secondary' : 
                         'bg-accent/20 text-accent'
                       }`}
                     >
@@ -163,59 +173,6 @@ const ProjectsSection: React.FC = () => {
                     </span>
                   ))}
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      
-      {/* Projects Repository Section */}
-      <div className="container mx-auto px-6 max-w-6xl mt-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            GitHub <span className="text-primary">Projects</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Explore my open-source contributions and project repositories on GitHub.
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          {repositories?.slice(0, 4).map((repo) => (
-            <div 
-              key={repo.id}
-              className="glassmorphism rounded-2xl p-6 hover:scale-105 transition-all duration-300"
-              data-testid={`repository-${repo.name}`}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-semibold text-foreground">{repo.name}</h3>
-                <div className="flex items-center text-yellow-500">
-                  <i className="fas fa-star text-sm mr-1"></i>
-                  <span className="text-sm">{repo.stargazers_count}</span>
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4">
-                {repo.description || "No description available"}
-              </p>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <div className={`w-3 h-3 rounded-full ${
-                    repo.language === 'JavaScript' ? 'bg-yellow-500' :
-                    repo.language === 'Python' ? 'bg-green-500' :
-                    repo.language === 'C++' ? 'bg-blue-500' :
-                    'bg-gray-500'
-                  }`}></div>
-                  <span className="text-xs text-muted-foreground">{repo.language || 'Unknown'}</span>
-                </div>
-                <a 
-                  href={repo.html_url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-accent transition-colors"
-                  data-testid={`link-repository-${repo.name}`}
-                >
-                  <i className="fab fa-github text-lg"></i>
-                </a>
               </div>
             </div>
           ))}
