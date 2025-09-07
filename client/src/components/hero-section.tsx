@@ -21,10 +21,10 @@ const HeroSection: React.FC = () => {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="container mx-auto px-6 flex items-center justify-between max-w-7xl">
         {/* Profile Card */}
-        <div className="glassmorphism rounded-3xl p-8 max-w-sm animate-slide-up">
+        <div className="glassmorphism rounded-3xl p-10 max-w-md animate-slide-up">
           {/* Profile Image with gradient border */}
           <div className="relative mb-6">
-            <div className="w-48 h-48 mx-auto relative">
+            <div className="w-56 h-56 mx-auto relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-secondary rounded-3xl animate-pulse-glow"></div>
               {isLoading ? (
                 <div className="relative w-full h-full bg-muted rounded-3xl border-4 border-background animate-pulse"></div>
