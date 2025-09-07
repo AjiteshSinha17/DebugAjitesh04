@@ -18,6 +18,10 @@ const SkillsSection: React.FC = () => {
     { name: 'Git', percentage: 89, icon: 'fab fa-git-alt', color: 'rgb(239, 68, 68)' },
     { name: 'Android', percentage: 88, icon: 'fab fa-android', color: 'rgb(16, 185, 129)' },
     { name: 'iOS', percentage: 82, icon: 'fab fa-apple', color: 'rgb(156, 163, 175)' },
+    { name: 'CI/CD', percentage: 80, icon: '', color: 'rgb(59, 130, 246)' },
+    { name: 'Docker', percentage: 78, icon: 'fab fa-docker', color: 'rgb(99, 102, 241)' },
+    { name: 'MySQL', percentage: 76, icon: '', color: 'rgb(34, 197, 94)' },
+    { name: 'REST API', percentage: 88, icon: '', color: 'rgb(234, 179, 8)' },
   ];
 
   return (

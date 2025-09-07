@@ -80,15 +80,7 @@ const AboutSection: React.FC = () => {
               <div className="text-sm text-muted-foreground">Years Experience</div>
             </div>
 
-            {/* Technical Skills simplified */}
-            <div className="col-span-2 glassmorphism rounded-2xl p-6">
-              <h4 className="text-sm font-semibold text-foreground mb-4">Technical Skills</h4>
-              <div className="flex flex-wrap gap-2 text-xs">
-                {['CI/CD', 'Docker', 'MySQL', 'REST API', 'Git'].map((s) => (
-                  <span key={s} className="px-3 py-1 rounded-full bg-muted/50 text-muted-foreground">{s}</span>
-                ))}
-              </div>
-            </div>
+            {/* Technical skills moved to Skills section */}
           </div>
         </div>
       </div>
