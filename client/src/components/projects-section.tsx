@@ -64,7 +64,7 @@ const ProjectsSection: React.FC = () => {
       icon: 'fas fa-user-check',
       color: 'from-purple-600 to-pink-600',
       tags: ['Python', 'OpenCV'],
-      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=600&fit=crop&crop=center',
+      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&h=600&fit=crop&crop=center',
       githubUrl: 'https://github.com/AjiteshSinha17/face-recognition',
       tools: ['OpenCV', 'NumPy'],
       languages: ['Python']
@@ -119,7 +119,7 @@ const ProjectsSection: React.FC = () => {
                 <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-600 rounded-full"></div>
                 
                 {/* Phone Screen */}
-                <div className="bg-black rounded-2xl p-2 h-64 relative overflow-hidden mt-4">
+                <div className="bg-black rounded-2xl p-2 h-80 relative overflow-hidden mt-4">
                   <div className="w-full h-full rounded-xl overflow-hidden relative">
                     <img 
                       src={project.image} 

@@ -16,6 +16,20 @@ const AboutSection: React.FC = () => {
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
+            {/* Education moved to top */}
+            <div className="glassmorphism rounded-2xl p-6" data-testid="about-education">
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                <i className="fas fa-graduation-cap mr-3 text-primary"></i>Education
+              </h3>
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="text-sm text-muted-foreground">B.Tech (AKTU)</div>
+                  <div className="text-base font-medium">Bachelor of Technology</div>
+                </div>
+                <div className="text-sm text-muted-foreground">2023 – 2027</div>
+              </div>
+            </div>
+
             <div className="glassmorphism rounded-2xl p-6" data-testid="about-mobile-development">
               <h3 className="text-xl font-semibold text-primary mb-3">
                 <i className="fas fa-mobile-alt mr-3"></i>Mobile Development Expert
@@ -36,20 +50,6 @@ const AboutSection: React.FC = () => {
               </p>
             </div>
             
-            {/* Education */}
-            <div className="glassmorphism rounded-2xl p-6" data-testid="about-education">
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                <i className="fas fa-graduation-cap mr-3 text-primary"></i>Education
-              </h3>
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="text-sm text-muted-foreground">B.Tech (AKTU)</div>
-                  <div className="text-base font-medium">Bachelor of Technology</div>
-                </div>
-                <div className="text-sm text-muted-foreground">2023 – 2027</div>
-              </div>
-            </div>
-
             <div className="glassmorphism rounded-2xl p-6" data-testid="about-fullstack">
               <h3 className="text-xl font-semibold text-accent mb-3">
                 <i className="fas fa-code mr-3"></i>Full Stack Capabilities
@@ -61,7 +61,7 @@ const AboutSection: React.FC = () => {
             </div>
           </div>
           
-          {/* Stats + Skills */}
+          {/* Stats + Technical Skills */}
           <div className="grid grid-cols-2 gap-6">
             <div className="glassmorphism rounded-2xl p-6 text-center" data-testid="stat-projects">
               <div className="text-3xl font-bold text-primary mb-2">8+</div>
@@ -80,39 +80,13 @@ const AboutSection: React.FC = () => {
               <div className="text-sm text-muted-foreground">Years Experience</div>
             </div>
 
-            {/* Skills Grid */}
-            <div className="col-span-2 grid md:grid-cols-2 gap-6">
-              <div className="glassmorphism rounded-2xl p-6">
-                <h4 className="text-sm font-semibold text-primary mb-4">Frontend</h4>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  {['React', 'Next.js', 'TailwindCSS', 'TypeScript', 'Framer Motion'].map((s) => (
-                    <span key={s} className="px-3 py-1 rounded-full bg-primary/10 text-primary">{s}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="glassmorphism rounded-2xl p-6">
-                <h4 className="text-sm font-semibold text-secondary mb-4">Backend</h4>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  {['REST API', 'Node.js', 'Zod', 'Auth'].map((s) => (
-                    <span key={s} className="px-3 py-1 rounded-full bg-secondary/10 text-secondary">{s}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="glassmorphism rounded-2xl p-6">
-                <h4 className="text-sm font-semibold text-accent mb-4">Databases</h4>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  {['MySQL', 'PostgreSQL', 'SQLite'].map((s) => (
-                    <span key={s} className="px-3 py-1 rounded-full bg-accent/10 text-accent">{s}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="glassmorphism rounded-2xl p-6">
-                <h4 className="text-sm font-semibold text-foreground mb-4">Tools & Methods</h4>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  {['CI/CD', 'Docker', 'Git', 'GitHub', 'Vercel'].map((s) => (
-                    <span key={s} className="px-3 py-1 rounded-full bg-muted/50 text-muted-foreground">{s}</span>
-                  ))}
-                </div>
+            {/* Technical Skills simplified */}
+            <div className="col-span-2 glassmorphism rounded-2xl p-6">
+              <h4 className="text-sm font-semibold text-foreground mb-4">Technical Skills</h4>
+              <div className="flex flex-wrap gap-2 text-xs">
+                {['CI/CD', 'Docker', 'MySQL', 'REST API', 'Git'].map((s) => (
+                  <span key={s} className="px-3 py-1 rounded-full bg-muted/50 text-muted-foreground">{s}</span>
+                ))}
               </div>
             </div>
           </div>
