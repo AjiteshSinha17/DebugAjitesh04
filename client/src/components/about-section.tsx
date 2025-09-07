@@ -12,10 +12,16 @@ const AboutSection: React.FC = () => {
             A passionate mobile app developer with expertise in creating beautiful, functional applications 
             that deliver exceptional user experiences across Android and iOS platforms.
           </p>
+          <ul className="text-muted-foreground max-w-3xl mx-auto list-disc list-inside mt-4 space-y-1">
+            <li>I enjoy crafting delightful mobile UX and smooth micro-interactions.</li>
+            <li>I like turning ideas into shipped features with measurable impact.</li>
+            <li>I value clean code, thoughtful architecture, and performance first.</li>
+            <li>Outside of code: podcasts, design systems, and a good cup of coffee.</li>
+          </ul>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid sm:grid-cols-2 gap-6">
             {/* Education moved to top */}
             <div className="glassmorphism rounded-2xl p-6" data-testid="about-education">
               <h3 className="text-xl font-semibold text-foreground mb-3">
@@ -23,7 +29,7 @@ const AboutSection: React.FC = () => {
               </h3>
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-sm text-muted-foreground">B.Tech (AKTU)</div>
+                  <div className="text-sm text-muted-foreground">Greater Noida College (AKTU)</div>
                   <div className="text-base font-medium">Bachelor of Technology</div>
                 </div>
                 <div className="text-sm text-muted-foreground">2023 – 2027</div>
@@ -50,6 +56,8 @@ const AboutSection: React.FC = () => {
               </p>
             </div>
             
+
+            
             <div className="glassmorphism rounded-2xl p-6" data-testid="about-fullstack">
               <h3 className="text-xl font-semibold text-accent mb-3">
                 <i className="fas fa-code mr-3"></i>Full Stack Capabilities
@@ -59,21 +67,7 @@ const AboutSection: React.FC = () => {
                 maintaining strong expertise in DSA and multiple programming languages.
               </p>
             </div>
-
-            {/* More About Me */}
-            <div className="glassmorphism rounded-2xl p-6" data-testid="about-more">
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                <i className="fas fa-user-astronaut mr-3 text-secondary"></i>More about me
-              </h3>
-              <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                <li>I enjoy crafting delightful mobile UX and smooth micro-interactions.</li>
-                <li>I like turning ideas into shipped features with measurable impact.</li>
-                <li>I value clean code, thoughtful architecture, and performance first.</li>
-                <li>Outside of code: podcasts, design systems, and a good cup of coffee.</li>
-              </ul>
-            </div>
           </div>
-          
           {/* Stats + Technical Skills */}
           <div className="grid grid-cols-2 gap-6">
             <div className="glassmorphism rounded-2xl p-6 text-center" data-testid="stat-projects">
@@ -81,11 +75,11 @@ const AboutSection: React.FC = () => {
               <div className="text-sm text-muted-foreground">Projects Completed</div>
             </div>
             <div className="glassmorphism rounded-2xl p-6 text-center" data-testid="stat-repositories">
-              <div className="text-3xl font-bold text-secondary mb-2">6+</div>
+              <div className="text-3xl font-bold text-secondary mb-2">12+</div>
               <div className="text-sm text-muted-foreground">GitHub Repositories</div>
             </div>
             <div className="glassmorphism rounded-2xl p-6 text-center" data-testid="stat-flutter">
-              <div className="text-3xl font-bold text-accent mb-2">95%</div>
+              <div className="text-3xl font-bold text-accent mb-2">89%</div>
               <div className="text-sm text-muted-foreground">Flutter Proficiency</div>
             </div>
             <div className="glassmorphism rounded-2xl p-6 text-center" data-testid="stat-experience">
