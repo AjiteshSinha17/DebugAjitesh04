@@ -10,7 +10,7 @@ interface Skill {
 
 const SkillsSection: React.FC = () => {
   const skills: Skill[] = [
-    { name: 'Flutter', percentage: 95, icon: 'fab fa-flutter-dash', color: 'rgb(59, 130, 246)' },
+    { name: 'Flutter', percentage: 89, icon: 'fab fa-flutter-dash', color: 'rgb(59, 130, 246)' },
     { name: 'Dart', percentage: 90, icon: '', color: 'rgb(168, 85, 247)' },
     { name: 'Python', percentage: 85, icon: 'fab fa-python', color: 'rgb(6, 182, 212)' },
     { name: 'Firebase', percentage: 88, icon: '🔥', color: 'rgb(251, 191, 36)' },

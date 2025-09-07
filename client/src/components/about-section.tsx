@@ -59,6 +59,19 @@ const AboutSection: React.FC = () => {
                 maintaining strong expertise in DSA and multiple programming languages.
               </p>
             </div>
+
+            {/* More About Me */}
+            <div className="glassmorphism rounded-2xl p-6" data-testid="about-more">
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                <i className="fas fa-user-astronaut mr-3 text-secondary"></i>More about me
+              </h3>
+              <ul className="list-disc list-inside text-muted-foreground space-y-2">
+                <li>I enjoy crafting delightful mobile UX and smooth micro-interactions.</li>
+                <li>I like turning ideas into shipped features with measurable impact.</li>
+                <li>I value clean code, thoughtful architecture, and performance first.</li>
+                <li>Outside of code: podcasts, design systems, and a good cup of coffee.</li>
+              </ul>
+            </div>
           </div>
           
           {/* Stats + Technical Skills */}
