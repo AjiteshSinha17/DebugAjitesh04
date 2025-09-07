@@ -8,63 +8,88 @@ interface Project {
   tags: string[];
   image: string;
   githubUrl: string;
+  tools?: string[];
+  languages?: string[];
 }
 
 const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
     {
+      name: 'Lucid AI',
+      description: 'The AI Roadmap Chatbot: your all-in-one, conversational mentor that maps personalized learning paths across AI, ML, and modern software topics. Covers curated resources, milestone tracking, and hands-on project suggestions to accelerate your journey.',
+      icon: 'fas fa-robot',
+      color: 'from-cyan-600 to-emerald-600',
+      tags: ['AI', 'Chatbot', 'Roadmaps'],
+      image: 'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&h=600&fit=crop&crop=center',
+      githubUrl: 'https://github.com/AjiteshSinha17/Lucid-Ai',
+      tools: ['LangChain', 'Vector DB', 'Node.js'],
+      languages: ['TypeScript', 'Python']
+    },
+    {
       name: 'Shopping App',
-      description: 'Full-featured grocery shopping app with cart functionality and secure checkout.',
+      description: 'End-to-end shopping experience with product listings, cart, and secure checkout. Optimized state management and smooth animations for modern UX.',
       icon: 'fas fa-shopping-cart',
       color: 'from-blue-600 to-purple-600',
       tags: ['Flutter', 'Firebase'],
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=600&fit=crop&crop=center',
-      githubUrl: 'https://github.com/AjiteshSinha17/shopping-app'
+      githubUrl: 'https://github.com/AjiteshSinha17/shopping-app',
+      tools: ['Firebase Auth', 'Firestore', 'Provider'],
+      languages: ['Dart']
     },
     {
       name: 'Recipe App',
-      description: 'Discover and cook delicious recipes with step-by-step instructions and ingredients.',
+      description: 'Discover, search, and save recipes with step-by-step guides, favorites, and offline-ready viewing.',
       icon: 'fas fa-utensils',
       color: 'from-orange-600 to-red-600',
       tags: ['Flutter', 'API'],
       image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop&crop=center',
-      githubUrl: 'https://github.com/AjiteshSinha17/recipe-app'
+      githubUrl: 'https://github.com/AjiteshSinha17/recipe-app',
+      tools: ['REST API', 'Caching'],
+      languages: ['Dart']
     },
     {
       name: 'Expense Tracker',
-      description: 'Track your expenses, set budgets, and analyze spending patterns with beautiful charts.',
+      description: 'Track expenses, set budgets, and visualize spending with charts and insights.',
       icon: 'fas fa-chart-line',
       color: 'from-green-600 to-emerald-600',
       tags: ['Flutter', 'SQLite'],
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=600&fit=crop&crop=center',
-      githubUrl: 'https://github.com/AjiteshSinha17/expense-tracker'
+      githubUrl: 'https://github.com/AjiteshSinha17/expense-tracker',
+      tools: ['SQLite', 'Charts'],
+      languages: ['Dart']
     },
     {
       name: 'Face Recognition',
-      description: 'AI-powered face detection and recognition system with real-time processing.',
+      description: 'Real-time face detection and recognition with preprocessing, model inference, and evaluation.',
       icon: 'fas fa-user-check',
       color: 'from-purple-600 to-pink-600',
       tags: ['Python', 'OpenCV'],
       image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=600&fit=crop&crop=center',
-      githubUrl: 'https://github.com/AjiteshSinha17/face-recognition'
+      githubUrl: 'https://github.com/AjiteshSinha17/face-recognition',
+      tools: ['OpenCV', 'NumPy'],
+      languages: ['Python']
     },
     {
       name: 'Quiz App',
-      description: 'Interactive quiz application with scoring, categories, and progress tracking.',
+      description: 'Interactive quiz with categories, timers, instant feedback, and progress tracking.',
       icon: 'fas fa-question-circle',
       color: 'from-indigo-600 to-blue-600',
       tags: ['Flutter', 'Dart'],
       image: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=600&fit=crop&crop=center',
-      githubUrl: 'https://github.com/AjiteshSinha17/quiz-app'
+      githubUrl: 'https://github.com/AjiteshSinha17/quiz-app',
+      tools: ['State Management'],
+      languages: ['Dart']
     },
     {
       name: 'Bagify App',
-      description: 'E-commerce solution for bag and accessories shopping with modern UI.',
+      description: 'E-commerce experience for bags and accessories with modern UI and smooth navigation.',
       icon: 'fas fa-shopping-bag',
       color: 'from-yellow-600 to-orange-600',
       tags: ['Flutter', 'UI/UX'],
       image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=600&fit=crop&crop=center',
-      githubUrl: 'https://github.com/AjiteshSinha17/bagify-app'
+      githubUrl: 'https://github.com/AjiteshSinha17/bagify-app',
+      tools: ['Animations'],
+      languages: ['Dart']
     }
   ];
 
@@ -73,7 +98,7 @@ const ProjectsSection: React.FC = () => {
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            My <span className="text-primary">Portfolio</span>
+            My <span className="text-primary">Projects</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Showcase of my mobile applications built with Flutter, featuring real-world solutions 
@@ -158,6 +183,17 @@ const ProjectsSection: React.FC = () => {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {project.description}
                 </p>
+
+                {(project.tools?.length || project.languages?.length) && (
+                  <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+                    {project.languages?.length ? (
+                      <span className="px-2 py-1 rounded bg-muted/50">Lang: {project.languages.join(', ')}</span>
+                    ) : null}
+                    {project.tools?.length ? (
+                      <span className="px-2 py-1 rounded bg-muted/50">Tools: {project.tools.join(', ')}</span>
+                    ) : null}
+                  </div>
+                )}
                 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIndex) => (

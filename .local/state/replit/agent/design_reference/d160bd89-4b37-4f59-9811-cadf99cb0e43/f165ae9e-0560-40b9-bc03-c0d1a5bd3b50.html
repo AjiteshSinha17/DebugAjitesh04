@@ -1,0 +1,1067 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajitesh Sinha - Mobile App Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "system-ui", "sans-serif"],
+                },
+                animation: {
+                    'float': 'float 6s ease-in-out infinite',
+                    'float-delayed': 'float 8s ease-in-out infinite 2s',
+                    'rotate': 'rotate 20s linear infinite',
+                    'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+                    'slide-up': 'slide-up 0.6s ease-out',
+                    'bounce-subtle': 'bounce-subtle 2s ease-in-out infinite',
+                    'progress': 'progress 2s ease-out',
+                }
+            }
+        }
+    };
+    </script>
+    <style>
+        :root {
+            --background: hsl(0 0% 0%);
+            --foreground: hsl(0 0% 100%);
+            --card: hsl(240 3% 7%);
+            --card-foreground: hsl(0 0% 100%);
+            --popover: hsl(240 5% 6%);
+            --popover-foreground: hsl(0 0% 100%);
+            --primary: hsl(217 91% 60%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(262 83% 58%);
+            --secondary-foreground: hsl(0 0% 100%);
+            --muted: hsl(240 3% 11%);
+            --muted-foreground: hsl(240 5% 65%);
+            --accent: hsl(188 94% 43%);
+            --accent-foreground: hsl(0 0% 100%);
+            --destructive: hsl(0 63% 31%);
+            --destructive-foreground: hsl(0 0% 100%);
+            --border: hsl(240 3% 11%);
+            --input: hsl(240 3% 11%);
+            --ring: hsl(217 91% 60%);
+            --radius: 0.75rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes progress {
+            from { stroke-dasharray: 0 251.2; }
+        }
+
+        .animated-bg {
+            background: linear-gradient(45deg, #000000, #0f0f0f, #1a1a1a);
+            background-size: 300% 300%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-ring {
+            transition: stroke-dasharray 2s ease-in-out;
+        }
+
+        .phone-mockup {
+            perspective: 1000px;
+        }
+
+        .phone-screen {
+            transform: rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .phone-mockup:hover .phone-screen {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans overflow-x-hidden animated-bg">
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="floating-element text-6xl text-primary animate-float" style="top: 10%; left: 5%;">{</div>
+        <div class="floating-element text-4xl text-accent animate-float-delayed" style="top: 20%; right: 10%;">}</div>
+        <div class="floating-element text-3xl text-secondary animate-rotate" style="top: 60%; left: 15%;">
+            <i class="fab fa-android"></i>
+        </div>
+        <div class="floating-element text-3xl text-primary animate-bounce-subtle" style="top: 30%; right: 20%;">
+            <i class="fab fa-apple"></i>
+        </div>
+        <div class="floating-element text-2xl text-accent animate-float" style="top: 70%; right: 5%;">
+            <i class="fab fa-react"></i>
+        </div>
+        <div class="floating-element text-4xl text-secondary animate-rotate" style="top: 80%; left: 8%;">◦</div>
+        <div class="floating-element text-3xl text-primary animate-float-delayed" style="top: 40%; left: 3%;">△</div>
+        <div class="floating-element text-2xl text-accent animate-bounce-subtle" style="top: 50%; right: 15%;">□</div>
+        
+        <!-- Gradient Orbs -->
+        <div class="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-r from-secondary to-primary rounded-full blur-xl opacity-20 animate-pulse"></div>
+        <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-gradient-to-r from-accent to-secondary rounded-full blur-xl opacity-15 animate-float"></div>
+    </div>
+
+    <!-- Side Navigation -->
+    <!-- @COMPONENT: SideNavigation -->
+    <nav class="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col space-y-4">
+        <div class="glassmorphism rounded-full p-1">
+            <button data-event="click:scrollToSection" data-target="hero" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-transform duration-300" title="Home">
+                <i class="fas fa-home"></i>
+            </button>
+        </div>
+        <div class="glassmorphism rounded-full p-1">
+            <button data-event="click:scrollToSection" data-target="about" class="w-12 h-12 rounded-full text-muted-foreground hover:text-primary hover:bg-muted flex items-center justify-center hover:scale-110 transition-all duration-300" title="About">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+        <div class="glassmorphism rounded-full p-1">
+            <button data-event="click:scrollToSection" data-target="skills" class="w-12 h-12 rounded-full text-muted-foreground hover:text-primary hover:bg-muted flex items-center justify-center hover:scale-110 transition-all duration-300" title="Skills">
+                <i class="fas fa-code"></i>
+            </button>
+        </div>
+        <div class="glassmorphism rounded-full p-1">
+            <button data-event="click:scrollToSection" data-target="portfolio" class="w-12 h-12 rounded-full text-muted-foreground hover:text-primary hover:bg-muted flex items-center justify-center hover:scale-110 transition-all duration-300" title="Portfolio">
+                <i class="fas fa-briefcase"></i>
+            </button>
+        </div>
+        <div class="glassmorphism rounded-full p-1">
+            <button data-event="click:scrollToSection" data-target="projects" class="w-12 h-12 rounded-full text-muted-foreground hover:text-primary hover:bg-muted flex items-center justify-center hover:scale-110 transition-all duration-300" title="Projects">
+                <i class="fas fa-folder-open"></i>
+            </button>
+        </div>
+        <div class="glassmorphism rounded-full p-1">
+            <button data-event="click:scrollToSection" data-target="blog" class="w-12 h-12 rounded-full text-muted-foreground hover:text-primary hover:bg-muted flex items-center justify-center hover:scale-110 transition-all duration-300" title="Blog">
+                <i class="fas fa-blog"></i>
+            </button>
+        </div>
+        <div class="glassmorphism rounded-full p-1">
+            <button data-event="click:scrollToSection" data-target="contact" class="w-12 h-12 rounded-full text-muted-foreground hover:text-primary hover:bg-muted flex items-center justify-center hover:scale-110 transition-all duration-300" title="Contact">
+                <i class="fas fa-envelope"></i>
+            </button>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: SideNavigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="container mx-auto px-6 flex items-center justify-between max-w-7xl">
+            <!-- Profile Card -->
+            <div class="glassmorphism rounded-3xl p-8 max-w-sm animate-slide-up">
+                <!-- Profile Image with gradient border -->
+                <div class="relative mb-6">
+                    <div class="w-48 h-48 mx-auto relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary via-accent to-secondary rounded-3xl animate-pulse-glow"></div>
+                        <!-- Real GitHub profile photo -->
+                        <img src="https://avatars.githubusercontent.com/u/89742421?v=4" 
+                             alt="Ajitesh Sinha Profile" 
+                             class="relative w-full h-full object-cover rounded-3xl border-4 border-background"
+                             data-mock="false">
+                    </div>
+                </div>
+                
+                <!-- Profile Info -->
+                <div class="text-center space-y-3">
+                    <h2 class="text-xl font-bold text-foreground" data-bind="profile.name">Ajitesh Sinha</h2>
+                    <p class="text-sm text-primary font-medium" data-bind="profile.title">Mobile App Developer</p>
+                    <p class="text-sm text-muted-foreground" data-bind="profile.email">ajiteshsinha2004@gmail.com</p>
+                    <div class="text-sm text-muted-foreground">
+                        <p data-bind="profile.location">Greater Noida</p>
+                        <p data-bind="profile.region">Uttar Pradesh, India</p>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="flex justify-center space-x-4 pt-4">
+                        <a href="https://github.com/AjiteshSinha17" 
+                           class="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:scale-110 transition-all duration-300"
+                           target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/AjiteshSinha" 
+                           class="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:scale-110 transition-all duration-300"
+                           target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <button data-event="click:openHireModal" class="w-full mt-6 bg-gradient-to-r from-primary to-accent text-white py-3 px-6 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 animate-pulse-glow">
+                        <i class="fas fa-envelope mr-2"></i>HIRE ME!
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="flex-1 max-w-3xl ml-16">
+                <div class="mb-8">
+                    <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6 animate-bounce-subtle">
+                        <i class="fas fa-star mr-2"></i>INTRODUCE
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 animate-slide-up">
+                    Say Hi from <span class="text-primary">Ajitesh</span>,<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Mobile App Developer</span>
+                </h1>
+                
+                <p class="text-lg text-muted-foreground mb-12 max-w-2xl animate-slide-up" style="animation-delay: 0.2s;">
+                    I design and code beautifully complex things simply and I love what I do. Just simple like that! 
+                    Passionate about building powerful, user-friendly Android and iOS applications with cutting-edge technology.
+                </p>
+                
+                <!-- Experience Counter -->
+                <div class="flex items-center space-x-8 animate-slide-up" style="animation-delay: 0.4s;">
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-bold text-primary mb-2">2+</div>
+                        <div class="text-sm text-muted-foreground uppercase tracking-wider">
+                            Years of<br>Experience
+                        </div>
+                    </div>
+                    
+                    <div class="w-20 h-20 relative">
+                        <div class="absolute inset-0 border-4 border-primary rounded-full animate-rotate opacity-30"></div>
+                        <div class="absolute inset-2 border-2 border-accent rounded-full animate-rotate" style="animation-direction: reverse;"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: AboutSection -->
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">About <span class="text-primary">Me</span></h2>
+                <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    A passionate mobile app developer with expertise in creating beautiful, functional applications 
+                    that deliver exceptional user experiences across Android and iOS platforms.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="glassmorphism rounded-2xl p-6">
+                        <h3 class="text-xl font-semibold text-primary mb-3">
+                            <i class="fas fa-mobile-alt mr-3"></i>Mobile Development Expert
+                        </h3>
+                        <p class="text-muted-foreground">
+                            Specialized in Flutter development with strong foundations in Dart, creating cross-platform 
+                            applications that perform seamlessly on both Android and iOS devices.
+                        </p>
+                    </div>
+                    
+                    <div class="glassmorphism rounded-2xl p-6">
+                        <h3 class="text-xl font-semibold text-secondary mb-3">
+                            <i class="fas fa-shield-alt mr-3"></i>Ethical Hacker
+                        </h3>
+                        <p class="text-muted-foreground">
+                            Passionate about cybersecurity with expertise in ethical hacking, vulnerability assessment, 
+                            and system fortification in Linux environments.
+                        </p>
+                    </div>
+                    
+                    <div class="glassmorphism rounded-2xl p-6">
+                        <h3 class="text-xl font-semibold text-accent mb-3">
+                            <i class="fas fa-code mr-3"></i>Full Stack Capabilities
+                        </h3>
+                        <p class="text-muted-foreground">
+                            Expanding skills in backend development, cloud computing, and web technologies while 
+                            maintaining strong expertise in DSA and multiple programming languages.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glassmorphism rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-bold text-primary mb-2">8+</div>
+                        <div class="text-sm text-muted-foreground">Projects Completed</div>
+                    </div>
+                    <div class="glassmorphism rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-bold text-secondary mb-2">6+</div>
+                        <div class="text-sm text-muted-foreground">GitHub Repositories</div>
+                    </div>
+                    <div class="glassmorphism rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-bold text-accent mb-2">95%</div>
+                        <div class="text-sm text-muted-foreground">Flutter Proficiency</div>
+                    </div>
+                    <div class="glassmorphism rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-bold text-primary mb-2">2+</div>
+                        <div class="text-sm text-muted-foreground">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Skills Section -->
+    <!-- @COMPONENT: SkillsSection -->
+    <section id="skills" class="py-20 relative">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Technical <span class="text-primary">Skills</span></h2>
+                <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    A comprehensive overview of my technical expertise with proficiency levels across various technologies and frameworks.
+                </p>
+            </div>
+            
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Flutter -->
+                <div class="glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="36" stroke="rgba(59, 130, 246, 0.2)" stroke-width="4" fill="none"/>
+                            <circle cx="40" cy="40" r="36" stroke="rgb(59, 130, 246)" stroke-width="4" fill="none"
+                                    stroke-dasharray="203 251.2" stroke-linecap="round" class="progress-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fab fa-flutter-dash text-2xl text-primary"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-foreground mb-2">Flutter</h3>
+                    <p class="text-2xl font-bold text-primary">95%</p>
+                    <p class="text-xs text-muted-foreground">Proficiency: 95%</p>
+                </div>
+
+                <!-- Dart -->
+                <div class="glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="36" stroke="rgba(168, 85, 247, 0.2)" stroke-width="4" fill="none"/>
+                            <circle cx="40" cy="40" r="36" stroke="rgb(168, 85, 247)" stroke-width="4" fill="none"
+                                    stroke-dasharray="203 251.2" stroke-linecap="round" class="progress-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center text-2xl font-bold text-secondary">
+                            D
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-foreground mb-2">Dart</h3>
+                    <p class="text-2xl font-bold text-secondary">90%</p>
+                    <p class="text-xs text-muted-foreground">Proficiency: 90%</p>
+                </div>
+
+                <!-- Python -->
+                <div class="glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="36" stroke="rgba(6, 182, 212, 0.2)" stroke-width="4" fill="none"/>
+                            <circle cx="40" cy="40" r="36" stroke="rgb(6, 182, 212)" stroke-width="4" fill="none"
+                                    stroke-dasharray="192 251.2" stroke-linecap="round" class="progress-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fab fa-python text-2xl text-accent"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-foreground mb-2">Python</h3>
+                    <p class="text-2xl font-bold text-accent">85%</p>
+                    <p class="text-xs text-muted-foreground">Proficiency: 85%</p>
+                </div>
+
+                <!-- Firebase -->
+                <div class="glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="36" stroke="rgba(251, 191, 36, 0.2)" stroke-width="4" fill="none"/>
+                            <circle cx="40" cy="40" r="36" stroke="rgb(251, 191, 36)" stroke-width="4" fill="none"
+                                    stroke-dasharray="188 251.2" stroke-linecap="round" class="progress-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center text-2xl text-yellow-500">
+                            🔥
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-foreground mb-2">Firebase</h3>
+                    <p class="text-2xl font-bold text-yellow-500">88%</p>
+                    <p class="text-xs text-muted-foreground">Proficiency: 88%</p>
+                </div>
+
+                <!-- C++ -->
+                <div class="glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="36" stroke="rgba(59, 130, 246, 0.2)" stroke-width="4" fill="none"/>
+                            <circle cx="40" cy="40" r="36" stroke="rgb(59, 130, 246)" stroke-width="4" fill="none"
+                                    stroke-dasharray="176 251.2" stroke-linecap="round" class="progress-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center text-lg font-bold text-primary">
+                            C++
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-foreground mb-2">C++</h3>
+                    <p class="text-2xl font-bold text-primary">82%</p>
+                    <p class="text-xs text-muted-foreground">Proficiency: 82%</p>
+                </div>
+
+                <!-- Git -->
+                <div class="glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="36" stroke="rgba(239, 68, 68, 0.2)" stroke-width="4" fill="none"/>
+                            <circle cx="40" cy="40" r="36" stroke="rgb(239, 68, 68)" stroke-width="4" fill="none"
+                                    stroke-dasharray="201 251.2" stroke-linecap="round" class="progress-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fab fa-git-alt text-2xl text-red-500"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-foreground mb-2">Git</h3>
+                    <p class="text-2xl font-bold text-red-500">89%</p>
+                    <p class="text-xs text-muted-foreground">Proficiency: 89%</p>
+                </div>
+
+                <!-- Android -->
+                <div class="glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="36" stroke="rgba(16, 185, 129, 0.2)" stroke-width="4" fill="none"/>
+                            <circle cx="40" cy="40" r="36" stroke="rgb(16, 185, 129)" stroke-width="4" fill="none"
+                                    stroke-dasharray="188 251.2" stroke-linecap="round" class="progress-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fab fa-android text-2xl text-green-500"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-foreground mb-2">Android</h3>
+                    <p class="text-2xl font-bold text-green-500">88%</p>
+                    <p class="text-xs text-muted-foreground">Proficiency: 88%</p>
+                </div>
+
+                <!-- iOS -->
+                <div class="glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="36" stroke="rgba(156, 163, 175, 0.2)" stroke-width="4" fill="none"/>
+                            <circle cx="40" cy="40" r="36" stroke="rgb(156, 163, 175)" stroke-width="4" fill="none"
+                                    stroke-dasharray="176 251.2" stroke-linecap="round" class="progress-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fab fa-apple text-2xl text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-foreground mb-2">iOS</h3>
+                    <p class="text-2xl font-bold text-gray-400">82%</p>
+                    <p class="text-xs text-muted-foreground">Proficiency: 82%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Portfolio/Projects Section -->
+    <!-- @COMPONENT: ProjectsSection -->
+    <section id="portfolio" class="py-20 relative">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">My <span class="text-primary">Portfolio</span></h2>
+                <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Showcase of my mobile applications built with Flutter, featuring real-world solutions 
+                    and innovative user experiences.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Shopping App -->
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300 phone-mockup">
+                    <div class="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-4 mb-6 phone-screen">
+                        <div class="bg-black rounded-2xl p-2 h-64 relative overflow-hidden">
+                            <!-- Mock app screenshot placeholder -->
+                            <div class="w-full h-full bg-gradient-to-b from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-shopping-cart text-4xl mb-2"></i>
+                                    <p class="text-sm">Shopping App Demo</p>
+                                    <!-- TODO: Replace with actual app video -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Shopping App</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Full-featured grocery shopping app with cart functionality and secure checkout.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Flutter</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Firebase</span>
+                    </div>
+                </div>
+
+                <!-- Recipe App -->
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300 phone-mockup">
+                    <div class="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-4 mb-6 phone-screen">
+                        <div class="bg-black rounded-2xl p-2 h-64 relative overflow-hidden">
+                            <div class="w-full h-full bg-gradient-to-b from-orange-600 to-red-600 rounded-xl flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-utensils text-4xl mb-2"></i>
+                                    <p class="text-sm">Recipe App Demo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Recipe App</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Discover and cook delicious recipes with step-by-step instructions and ingredients.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Flutter</span>
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">API</span>
+                    </div>
+                </div>
+
+                <!-- Expense Tracker -->
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300 phone-mockup">
+                    <div class="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-4 mb-6 phone-screen">
+                        <div class="bg-black rounded-2xl p-2 h-64 relative overflow-hidden">
+                            <div class="w-full h-full bg-gradient-to-b from-green-600 to-emerald-600 rounded-xl flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-chart-line text-4xl mb-2"></i>
+                                    <p class="text-sm">Expense Tracker</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Expense Tracker</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Track your expenses, set budgets, and analyze spending patterns with beautiful charts.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Flutter</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">SQLite</span>
+                    </div>
+                </div>
+
+                <!-- Face Recognition -->
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300 phone-mockup">
+                    <div class="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-4 mb-6 phone-screen">
+                        <div class="bg-black rounded-2xl p-2 h-64 relative overflow-hidden">
+                            <div class="w-full h-full bg-gradient-to-b from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-user-check text-4xl mb-2"></i>
+                                    <p class="text-sm">Face Recognition</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Face Recognition</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        AI-powered face detection and recognition system with real-time processing.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Python</span>
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">OpenCV</span>
+                    </div>
+                </div>
+
+                <!-- Quiz App -->
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300 phone-mockup">
+                    <div class="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-4 mb-6 phone-screen">
+                        <div class="bg-black rounded-2xl p-2 h-64 relative overflow-hidden">
+                            <div class="w-full h-full bg-gradient-to-b from-indigo-600 to-blue-600 rounded-xl flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-question-circle text-4xl mb-2"></i>
+                                    <p class="text-sm">Quiz App Demo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Quiz App</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Interactive quiz application with scoring, categories, and progress tracking.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Flutter</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Dart</span>
+                    </div>
+                </div>
+
+                <!-- Bagify App -->
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300 phone-mockup">
+                    <div class="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-4 mb-6 phone-screen">
+                        <div class="bg-black rounded-2xl p-2 h-64 relative overflow-hidden">
+                            <div class="w-full h-full bg-gradient-to-b from-yellow-600 to-orange-600 rounded-xl flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-shopping-bag text-4xl mb-2"></i>
+                                    <p class="text-sm">Bagify App</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Bagify App</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        E-commerce solution for bag and accessories shopping with modern UI.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Flutter</span>
+                        <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProjectsSection -->
+
+    <!-- Projects Repository Section -->
+    <!-- @COMPONENT: ProjectsRepository -->
+    <section id="projects" class="py-20 relative">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">GitHub <span class="text-primary">Projects</span></h2>
+                <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Explore my open-source contributions and project repositories on GitHub.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- @MAP: projects.map(project => ( -->
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-xl font-semibold text-foreground" data-bind="project.name">shopping-app</h3>
+                        <div class="flex items-center text-yellow-500">
+                            <i class="fas fa-star text-sm mr-1"></i>
+                            <span class="text-sm" data-bind="project.stars">1</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-muted-foreground mb-4" data-bind="project.description">
+                        Easily browse a wide selection of grocery items—from fruits and vegetables to pantry staples, snacks, and household goods. Add products to your cart, review your choices, and check out securely.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <span class="text-xs text-muted-foreground" data-bind="project.language">C++</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/shopping-app" target="_blank" 
+                           class="text-primary hover:text-accent transition-colors">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-xl font-semibold text-foreground">recipe-app</h3>
+                        <div class="flex items-center text-yellow-500">
+                            <i class="fas fa-star text-sm mr-1"></i>
+                            <span class="text-sm">1</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Discover, cook, and enjoy delicious recipes from around the world! Complete with ingredients, step-by-step instructions, and nutritional information.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <span class="text-xs text-muted-foreground">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/recipe-app" target="_blank" 
+                           class="text-primary hover:text-accent transition-colors">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-xl font-semibold text-foreground">expense-tracker</h3>
+                        <div class="flex items-center text-yellow-500">
+                            <i class="fas fa-star text-sm mr-1"></i>
+                            <span class="text-sm">1</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Track your expenses, set budgets, and analyze spending patterns with beautiful charts and insights.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <span class="text-xs text-muted-foreground">C++</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/expense-tracker" target="_blank" 
+                           class="text-primary hover:text-accent transition-colors">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-xl font-semibold text-foreground">face-recognition</h3>
+                        <div class="flex items-center text-yellow-500">
+                            <i class="fas fa-star text-sm mr-1"></i>
+                            <span class="text-sm">1</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        AI-powered face detection and recognition system with real-time processing capabilities.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <span class="text-xs text-muted-foreground">C++</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/face-recognition" target="_blank" 
+                           class="text-primary hover:text-accent transition-colors">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProjectsRepository -->
+
+    <!-- Blog Section -->
+    <!-- @COMPONENT: BlogSection -->
+    <section id="blog" class="py-20 relative">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Latest <span class="text-primary">Blog</span></h2>
+                <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Sharing insights, tutorials, and experiences from my journey as a mobile app developer.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300" data-mock="true">
+                    <div class="w-full h-48 bg-gradient-to-r from-primary to-accent rounded-xl mb-4 flex items-center justify-center">
+                        <i class="fab fa-flutter-dash text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-foreground mb-2">Flutter State Management Best Practices</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Exploring different state management solutions in Flutter and when to use each approach.
+                    </p>
+                    <div class="text-xs text-muted-foreground">Dec 15, 2024</div>
+                </div>
+                
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300" data-mock="true">
+                    <div class="w-full h-48 bg-gradient-to-r from-secondary to-primary rounded-xl mb-4 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-foreground mb-2">Cross-Platform Mobile Development in 2024</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Comparing Flutter, React Native, and native development for modern mobile apps.
+                    </p>
+                    <div class="text-xs text-muted-foreground">Dec 10, 2024</div>
+                </div>
+                
+                <div class="glassmorphism rounded-2xl p-6 hover:scale-105 transition-transform duration-300" data-mock="true">
+                    <div class="w-full h-48 bg-gradient-to-r from-accent to-secondary rounded-xl mb-4 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-foreground mb-2">Ethical Hacking for Mobile Apps</h3>
+                    <p class="text-sm text-muted-foreground mb-4">
+                        Security considerations and penetration testing techniques for mobile applications.
+                    </p>
+                    <div class="text-xs text-muted-foreground">Dec 5, 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: BlogSection -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection -->
+    <section id="contact" class="py-20 relative">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Let's Work <span class="text-primary">Together!</span></h2>
+                <p class="text-lg text-muted-foreground">ajiteshsinha2004@gmail.com</p>
+                <a href="#" class="text-primary hover:text-accent transition-colors">Resume Here</a>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="glassmorphism rounded-3xl p-8 max-w-2xl mx-auto">
+                <form data-event="submit:handleFormSubmit" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-foreground mb-2">
+                                FULL NAME <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" 
+                                   placeholder="Your Full Name"
+                                   class="w-full bg-muted/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+                                   required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-foreground mb-2">
+                                EMAIL <span class="text-red-500">*</span>
+                            </label>
+                            <input type="email" 
+                                   placeholder="Your email address"
+                                   class="w-full bg-muted/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+                                   required>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-foreground mb-2">
+                                PHONE <span class="text-muted-foreground">(optional)</span>
+                            </label>
+                            <input type="tel" 
+                                   placeholder="Your number phone"
+                                   class="w-full bg-muted/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-foreground mb-2">
+                                SUBJECT <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" 
+                                   placeholder="Enter subject"
+                                   class="w-full bg-muted/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+                                   required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-foreground mb-2">
+                            YOUR BUDGET <span class="text-muted-foreground">(optional)</span>
+                        </label>
+                        <input type="text" 
+                               placeholder="A range budget for your project"
+                               class="w-full bg-muted/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-foreground mb-2">MESSAGE</label>
+                        <textarea placeholder="Write your message here ..."
+                                  rows="6"
+                                  class="w-full bg-muted/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors resize-none"
+                                  required></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-primary to-accent text-white py-4 px-8 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 animate-pulse-glow">
+                        <i class="fas fa-paper-plane mr-2"></i>Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer -->
+    <footer class="py-12 border-t border-border">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/AjiteshSinha17" target="_blank" 
+                   class="text-muted-foreground hover:text-primary transition-colors">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://linkedin.com/in/AjiteshSinha" target="_blank" 
+                   class="text-muted-foreground hover:text-primary transition-colors">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+                <a href="mailto:ajiteshsinha2004@gmail.com" 
+                   class="text-muted-foreground hover:text-primary transition-colors">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+            <p class="text-muted-foreground">© 2024 Ajitesh Sinha. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // Navigation functionality
+            document.querySelectorAll('[data-event="click:scrollToSection"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    const section = document.getElementById(target);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Update active nav state
+                        document.querySelectorAll('[data-event="click:scrollToSection"]').forEach(btn => {
+                            btn.classList.remove('bg-primary', 'text-white');
+                            btn.classList.add('text-muted-foreground', 'hover:text-primary', 'hover:bg-muted');
+                        });
+                        
+                        this.classList.remove('text-muted-foreground', 'hover:text-primary', 'hover:bg-muted');
+                        this.classList.add('bg-primary', 'text-white');
+                    }
+                });
+            });
+
+            // Form submission handler
+            document.querySelector('[data-event="submit:handleFormSubmit"]')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement form submission logic
+                alert('Thank you for your message! I will get back to you soon.');
+            });
+
+            // Hire me button handler
+            document.querySelector('[data-event="click:openHireModal"]')?.addEventListener('click', function() {
+                // TODO: Implement hire modal or redirect to contact section
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '-50px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        entry.target.classList.add('animate-slide-up');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections for scroll animations
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Skill progress animation
+            const skillProgressElements = document.querySelectorAll('.progress-ring');
+            const skillsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animate progress rings when skills section comes into view
+                        setTimeout(() => {
+                            entry.target.style.animationPlayState = 'running';
+                        }, 500);
+                    }
+                });
+            }, observerOptions);
+
+            skillProgressElements.forEach(element => {
+                skillsObserver.observe(element);
+            });
+
+            // Dynamic background particle creation
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'floating-element text-xs text-primary opacity-20 animate-float';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.innerHTML = ['<', '>', '{', '}', '(', ')', ';', '/'][Math.floor(Math.random() * 8)];
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                
+                document.querySelector('.fixed.inset-0').appendChild(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 10000);
+            }
+
+            // Create particles periodically
+            setInterval(createParticle, 3000);
+
+            // Add parallax effect to background elements
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.floating-element');
+                
+                parallaxElements.forEach((element, index) => {
+                    const speed = (index % 3 + 1) * 0.5;
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchGitHubUser } from '@/lib/github-api';
@@ -100,7 +101,7 @@ const HeroSection: React.FC = () => {
           </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 animate-slide-up">
-            Say Hi from <span className="text-primary">Ajitesh</span>,<br />
+            Hi, I'm <span className="text-primary">Ajitesh</span><br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">
               Mobile App Developer
             </span>
@@ -121,14 +122,20 @@ const HeroSection: React.FC = () => {
                 Years of<br />Experience
               </div>
             </div>
-            
-            <div className="w-20 h-20 relative">
+
+            <button
+              type="button"
+              onClick={() => scrollToSection('portfolio')}
+              title="View Projects"
+              aria-label="View Projects"
+              className="w-20 h-20 relative cursor-pointer group"
+            >
               <div className="absolute inset-0 border-4 border-primary rounded-full animate-rotate opacity-30"></div>
               <div className="absolute inset-2 border-2 border-accent rounded-full animate-rotate" style={{ animationDirection: 'reverse' }}></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-drift group-hover:animate-pulse"></div>
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </div>

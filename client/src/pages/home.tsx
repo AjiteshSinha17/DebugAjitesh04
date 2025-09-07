@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import AnimatedBackground from '@/components/animated-background';
 import SideNavigation from '@/components/side-navigation';

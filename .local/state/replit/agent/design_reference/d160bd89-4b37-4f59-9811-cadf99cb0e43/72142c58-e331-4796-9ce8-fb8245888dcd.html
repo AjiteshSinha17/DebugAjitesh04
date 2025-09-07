@@ -1,0 +1,547 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajitesh Sinha - Mobile App Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    colors: {
+                        background: "var(--background)",
+                        foreground: "var(--foreground)",
+                        card: {
+                            DEFAULT: "var(--card)",
+                            foreground: "var(--card-foreground)",
+                        },
+                        primary: {
+                            DEFAULT: "var(--primary)",
+                            foreground: "var(--primary-foreground)",
+                        },
+                        secondary: {
+                            DEFAULT: "var(--secondary)",
+                            foreground: "var(--secondary-foreground)",
+                        },
+                        muted: {
+                            DEFAULT: "var(--muted)",
+                            foreground: "var(--muted-foreground)",
+                        },
+                        accent: {
+                            DEFAULT: "var(--accent)",
+                            foreground: "var(--accent-foreground)",
+                        },
+                        border: "var(--border)",
+                        input: "var(--input)",
+                        ring: "var(--ring)",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+                        'line-move': 'line-move 8s linear infinite',
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --background: hsl(0 0% 0%);
+            --foreground: hsl(0 0% 100%);
+            --card: hsl(0 0% 7%);
+            --card-foreground: hsl(0 0% 100%);
+            --primary: hsl(195 100% 50%);
+            --primary-foreground: hsl(0 0% 0%);
+            --secondary: hsl(220 100% 50%);
+            --secondary-foreground: hsl(0 0% 100%);
+            --muted: hsl(0 0% 25%);
+            --muted-foreground: hsl(0 0% 55%);
+            --accent: hsl(195 100% 60%);
+            --accent-foreground: hsl(0 0% 0%);
+            --border: hsl(0 0% 15%);
+            --input: hsl(0 0% 10%);
+            --ring: hsl(195 100% 50%);
+            --radius: 0.75rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+            100% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6); }
+        }
+
+        @keyframes line-move {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.4), transparent);
+            animation: line-move 8s linear infinite;
+        }
+
+        .line:nth-child(1) {
+            top: 10%;
+            height: 2px;
+            width: 200px;
+            animation-delay: 0s;
+        }
+
+        .line:nth-child(2) {
+            top: 30%;
+            height: 1px;
+            width: 150px;
+            animation-delay: 2s;
+        }
+
+        .line:nth-child(3) {
+            top: 60%;
+            height: 2px;
+            width: 300px;
+            animation-delay: 4s;
+        }
+
+        .line:nth-child(4) {
+            top: 80%;
+            height: 1px;
+            width: 100px;
+            animation-delay: 6s;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle {
+            fill: transparent;
+            stroke: hsl(0 0% 15%);
+            stroke-width: 4;
+        }
+
+        .progress-ring-progress {
+            fill: transparent;
+            stroke: hsl(195 100% 50%);
+            stroke-width: 4;
+            stroke-linecap: round;
+            transition: stroke-dasharray 1s ease-in-out;
+        }
+
+        .skill-card:hover .progress-ring-progress {
+            stroke: hsl(195 100% 60%);
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- @COMPONENT: SideNavigation -->
+    <!-- Side Navigation -->
+    <nav class="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block">
+        <div class="bg-card border border-border rounded-full p-2 backdrop-blur-sm">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="p-3 rounded-full bg-primary text-primary-foreground hover:bg-accent transition-all duration-300" data-implementation="Add active state logic">
+                    <i class="fas fa-home text-lg"></i>
+                </a>
+                <a href="#about" class="p-3 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300">
+                    <i class="fas fa-user text-lg"></i>
+                </a>
+                <a href="#portfolio" class="p-3 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300">
+                    <i class="fas fa-briefcase text-lg"></i>
+                </a>
+                <a href="#skills" class="p-3 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300">
+                    <i class="fas fa-code text-lg"></i>
+                </a>
+                <a href="#blog" class="p-3 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300">
+                    <i class="fas fa-blog text-lg"></i>
+                </a>
+                <a href="#projects" class="p-3 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300">
+                    <i class="fas fa-layer-group text-lg"></i>
+                </a>
+                <a href="#contact" class="p-3 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300">
+                    <i class="fas fa-envelope text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: SideNavigation -->
+
+    <!-- @COMPONENT: HeroSection -->
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-md w-full">
+            <div class="bg-card border border-border rounded-3xl p-8 text-center animate-pulse-glow">
+                <!-- Profile Image -->
+                <!-- GitHub profile image of Ajitesh Sinha -->
+                <div class="mb-6">
+                    <img src="https://avatars.githubusercontent.com/u/89742421?v=4" 
+                         alt="Ajitesh Sinha - Mobile App Developer" 
+                         class="w-32 h-32 rounded-3xl mx-auto object-cover border-2 border-primary shadow-lg"
+                         data-mock="false">
+                </div>
+
+                <!-- Logo/Brand -->
+                <div class="mb-6">
+                    <div class="w-16 h-16 mx-auto border-2 border-foreground rounded-full flex items-center justify-center">
+                        <span class="text-xl font-bold" data-bind="initials">AS</span>
+                    </div>
+                </div>
+
+                <!-- Name and Title -->
+                <h1 class="text-2xl font-bold mb-2" data-bind="name">Ajitesh Sinha</h1>
+                <p class="text-primary text-lg font-medium mb-6">Mobile App Developer</p>
+
+                <!-- Contact Info -->
+                <p class="text-muted-foreground mb-2" data-bind="email">ajiteshsinha2004@gmail.com</p>
+                <p class="text-muted-foreground mb-8" data-bind="location">Greater Noida<br>Uttar Pradesh, India</p>
+
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-4 mb-8">
+                    <a href="https://github.com/AjiteshSinha17" 
+                       class="w-12 h-12 border border-border rounded-full flex items-center justify-center hover:border-primary hover:text-primary transition-all duration-300"
+                       data-implementation="Open in new tab">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/AjiteshSinha" 
+                       class="w-12 h-12 border border-border rounded-full flex items-center justify-center hover:border-primary hover:text-primary transition-all duration-300"
+                       data-implementation="Open in new tab">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+                </div>
+
+                <!-- CTA Button -->
+                <button class="w-full bg-muted text-foreground font-medium py-3 px-6 rounded-xl hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center space-x-2"
+                        data-event="click:openContactForm"
+                        data-implementation="Scroll to contact section or open contact modal">
+                    <i class="fas fa-envelope"></i>
+                    <span>HIRE ME!</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- @COMPONENT: SkillsSection -->
+    <!-- Skills Section -->
+    <section id="skills" class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-6xl w-full">
+            <h2 class="text-4xl font-bold text-center mb-16">My Skills</h2>
+            
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- @MAP: skills.map(skill => ( -->
+                <!-- Flutter Skill -->
+                <div class="skill-card text-center group">
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="progress-ring w-full h-full" viewBox="0 0 120 120">
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-progress" cx="60" cy="60" r="50" 
+                                    style="stroke-dasharray: 283; stroke-dashoffset: 28.3;" data-progress="90"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fab fa-flutter text-primary text-2xl mb-2"></i>
+                                <p class="text-xl font-bold">90%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">Flutter</p>
+                </div>
+
+                <!-- React Native Skill -->
+                <div class="skill-card text-center group">
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="progress-ring w-full h-full" viewBox="0 0 120 120">
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-progress" cx="60" cy="60" r="50" 
+                                    style="stroke-dasharray: 283; stroke-dashoffset: 42.45;" data-progress="85"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fab fa-react text-primary text-2xl mb-2"></i>
+                                <p class="text-xl font-bold">85%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">React Native</p>
+                </div>
+
+                <!-- Git Skill -->
+                <div class="skill-card text-center group">
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="progress-ring w-full h-full" viewBox="0 0 120 120">
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-progress" cx="60" cy="60" r="50" 
+                                    style="stroke-dasharray: 283; stroke-dashoffset: 39.62;" data-progress="86"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fab fa-git-alt text-primary text-2xl mb-2"></i>
+                                <p class="text-xl font-bold">86%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">Git</p>
+                </div>
+
+                <!-- Firebase Skill -->
+                <div class="skill-card text-center group">
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="progress-ring w-full h-full" viewBox="0 0 120 120">
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-progress" cx="60" cy="60" r="50" 
+                                    style="stroke-dasharray: 283; stroke-dashoffset: 39.62;" data-progress="86"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-fire text-primary text-2xl mb-2"></i>
+                                <p class="text-xl font-bold">86%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">Firebase</p>
+                </div>
+
+                <!-- CI/CD Skill -->
+                <div class="skill-card text-center group">
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="progress-ring w-full h-full" viewBox="0 0 120 120">
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-progress" cx="60" cy="60" r="50" 
+                                    style="stroke-dasharray: 283; stroke-dashoffset: 33.96;" data-progress="88"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-sync-alt text-primary text-2xl mb-2"></i>
+                                <p class="text-xl font-bold">88%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">CI / CD</p>
+                </div>
+
+                <!-- Packages/Plugins Skill -->
+                <div class="skill-card text-center group">
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="progress-ring w-full h-full" viewBox="0 0 120 120">
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-progress" cx="60" cy="60" r="50" 
+                                    style="stroke-dasharray: 283; stroke-dashoffset: 28.3;" data-progress="90"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-cube text-primary text-2xl mb-2"></i>
+                                <p class="text-xl font-bold">90%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">Packages / Plugins</p>
+                </div>
+
+                <!-- GraphQL Skill -->
+                <div class="skill-card text-center group">
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="progress-ring w-full h-full" viewBox="0 0 120 120">
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-progress" cx="60" cy="60" r="50" 
+                                    style="stroke-dasharray: 283; stroke-dashoffset: 39.62;" data-progress="86"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-project-diagram text-primary text-2xl mb-2"></i>
+                                <p class="text-xl font-bold">86%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">GraphQL</p>
+                </div>
+
+                <!-- REST API Skill -->
+                <div class="skill-card text-center group">
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="progress-ring w-full h-full" viewBox="0 0 120 120">
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-progress" cx="60" cy="60" r="50" 
+                                    style="stroke-dasharray: 283; stroke-dashoffset: 42.45;" data-progress="85"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-server text-primary text-2xl mb-2"></i>
+                                <p class="text-xl font-bold">85%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">REST</p>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SkillsSection -->
+
+    <!-- @COMPONENT: ContactSection -->
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-4xl w-full">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Let's Work Together!</h2>
+                <p class="text-muted-foreground text-lg">ajiteshsinha2004@gmail.com</p>
+                
+                <!-- Resume Download Link -->
+                <div class="mt-6">
+                    <a href="#" class="text-secondary hover:text-accent transition-colors duration-300 font-medium"
+                       data-implementation="Link to actual resume PDF file">
+                        Resume Here
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-card border border-border rounded-2xl p-8">
+                <form class="space-y-6" data-event="submit:handleContactSubmit" data-implementation="Add form validation and submission logic">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="fullName" class="block text-sm font-medium mb-2">
+                                FULL NAME <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="fullName" name="fullName" required
+                                   placeholder="Your Full Name"
+                                   class="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">
+                                EMAIL <span class="text-red-500">*</span>
+                            </label>
+                            <input type="email" id="email" name="email" required
+                                   placeholder="Your email address"
+                                   class="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors">
+                        </div>
+
+                        <!-- Phone -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium mb-2">
+                                PHONE <span class="text-muted-foreground text-xs">(optional)</span>
+                            </label>
+                            <input type="tel" id="phone" name="phone"
+                                   placeholder="Your number phone"
+                                   class="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors">
+                        </div>
+
+                        <!-- Subject -->
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">
+                                SUBJECT <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="subject" name="subject" required
+                                   placeholder="Enter subject"
+                                   class="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Budget -->
+                    <div>
+                        <label for="budget" class="block text-sm font-medium mb-2">
+                            YOUR BUDGET <span class="text-muted-foreground text-xs">(optional)</span>
+                        </label>
+                        <input type="text" id="budget" name="budget"
+                               placeholder="A range budget for your project"
+                               class="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors">
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2">MESSAGE</label>
+                        <textarea id="message" name="message" rows="6"
+                                  placeholder="Write your message here ..."
+                                  class="w-full bg-input border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors resize-none"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center pt-4">
+                        <button type="submit" 
+                                class="bg-primary text-primary-foreground font-medium py-3 px-8 rounded-lg hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-xl">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 lg:hidden">
+        <div class="bg-card border border-border rounded-full px-6 py-2 backdrop-blur-sm">
+            <div class="flex space-x-6">
+                <a href="#home" class="p-2 text-primary" data-implementation="Add active state logic">
+                    <i class="fas fa-home text-lg"></i>
+                </a>
+                <a href="#skills" class="p-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <i class="fas fa-code text-lg"></i>
+                </a>
+                <a href="#contact" class="p-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <i class="fas fa-envelope text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // TODO: Implement smooth scrolling navigation
+        (function() {
+            // Add smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // TODO: Implement skill progress animation on scroll
+            // TODO: Add form validation and submission handling
+            // TODO: Implement active navigation state management
+            // TODO: Add mobile touch gesture support
+        })();
+    </script>
+</body>
+</html>

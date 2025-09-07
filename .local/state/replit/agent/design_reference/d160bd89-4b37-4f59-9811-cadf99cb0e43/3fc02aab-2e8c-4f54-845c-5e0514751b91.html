@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajitesh Sinha - Mobile App Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                    chart: {
+                        "1": "var(--chart-1)",
+                        "2": "var(--chart-2)",
+                        "3": "var(--chart-3)",
+                        "4": "var(--chart-4)",
+                        "5": "var(--chart-5)",
+                    }
+                },
+                fontFamily: {
+                    sans: ["var(--font-sans)"],
+                    serif: ["var(--font-serif)"],
+                    mono: ["var(--font-mono)"],
+                },
+                keyframes: {
+                    float: {
+                        '0%, 100%': { transform: 'translateY(0px)' },
+                        '50%': { transform: 'translateY(-10px)' }
+                    },
+                    rotate: {
+                        '0%': { transform: 'rotate(0deg)' },
+                        '100%': { transform: 'rotate(360deg)' }
+                    },
+                    fadeInUp: {
+                        '0%': { opacity: '0', transform: 'translateY(30px)' },
+                        '100%': { opacity: '1', transform: 'translateY(0)' }
+                    }
+                },
+                animation: {
+                    float: 'float 3s ease-in-out infinite',
+                    rotate: 'rotate 20s linear infinite',
+                    fadeInUp: 'fadeInUp 0.6s ease-out forwards'
+                }
+            }
+        }
+    };
+    </script>
+    <style>
+        :root {
+            --background: hsl(0 0% 0%);
+            --foreground: hsl(0 0% 98%);
+            --card: hsl(0 0% 3.9%);
+            --card-foreground: hsl(0 0% 98%);
+            --popover: hsl(0 0% 3.9%);
+            --popover-foreground: hsl(0 0% 98%);
+            --primary: hsl(217 91% 60%);
+            --primary-foreground: hsl(0 0% 98%);
+            --secondary: hsl(217 32% 17%);
+            --secondary-foreground: hsl(0 0% 98%);
+            --muted: hsl(0 0% 14.9%);
+            --muted-foreground: hsl(0 0% 63.9%);
+            --accent: hsl(262 83% 58%);
+            --accent-foreground: hsl(0 0% 98%);
+            --destructive: hsl(0 62.8% 30.6%);
+            --destructive-foreground: hsl(0 0% 98%);
+            --border: hsl(0 0% 14.9%);
+            --input: hsl(0 0% 14.9%);
+            --ring: hsl(217 91% 60%);
+            --radius: 0.5rem;
+            --chart-1: hsl(217 91% 60%);
+            --chart-2: hsl(262 83% 58%);
+            --chart-3: hsl(43 96% 56%);
+            --chart-4: hsl(120 100% 50%);
+            --chart-5: hsl(0 100% 50%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .animated-bg {
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+        }
+
+        .glass-effect {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-circle {
+            transition: stroke-dasharray 2s ease-in-out;
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .desktop-layout {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-layout {
+                display: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-background text-foreground overflow-x-hidden">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 animated-bg pointer-events-none"></div>
+    
+    <!-- Floating Geometric Shapes -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-20 left-10 w-32 h-32 border border-primary/20 rounded-full animate-float"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 border border-accent/20 animate-float" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-32 left-1/4 w-16 h-16 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg animate-rotate"></div>
+        <div class="absolute top-1/3 right-1/3 w-2 h-2 bg-primary rounded-full animate-ping"></div>
+        <div class="absolute bottom-1/4 right-10 w-1 h-1 bg-accent rounded-full animate-pulse"></div>
+    </div>
+
+    <!-- Mobile Layout -->
+    <div class="mobile-layout min-h-screen">
+        <!-- Mobile Header -->
+        <header class="relative z-50 p-6">
+            <div class="glass-effect rounded-2xl p-6 text-center">
+                <!-- Professional headshot of a young Indian mobile app developer -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
+                     alt="Ajitesh Sinha - Mobile App Developer" 
+                     class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary/50 object-cover">
+                <h1 class="text-2xl font-bold text-foreground mb-1">Ajitesh Sinha</h1>
+                <p class="text-primary mb-2">Mobile App Developer</p>
+                <p class="text-sm text-muted-foreground mb-4">ajiteshsinha2004@gmail.com</p>
+                <p class="text-sm text-muted-foreground mb-6">Greater Noida, Uttar Pradesh, India</p>
+                
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-4 mb-6">
+                    <a href="https://github.com/AjiteshSinha17" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/AjiteshSinha" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+                </div>
+                
+                <!-- CTA Button -->
+                <button class="w-full bg-muted hover:bg-primary text-foreground py-3 px-6 rounded-lg transition-colors font-medium">
+                    <i class="fas fa-envelope mr-2"></i>
+                    HIRE ME!
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Content -->
+        <main class="px-6 pb-20">
+            <!-- Hero Section -->
+            <section class="mb-16">
+                <div class="text-center mb-8">
+                    <div class="inline-block bg-secondary/50 px-4 py-2 rounded-full text-sm mb-6">
+                        <i class="fas fa-user mr-2"></i>
+                        INTRODUCE
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        Say Hi from Ajitesh,<br>
+                        <span class="text-primary">Mobile App Developer</span>
+                    </h2>
+                    <p class="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                        I design and code beautifully complex things simply and I love what I do. Just simple like that!
+                    </p>
+                    
+                    <!-- Experience Counter -->
+                    <div class="text-center mb-8">
+                        <div class="text-6xl font-bold text-primary mb-2">2+</div>
+                        <div class="text-sm text-muted-foreground">YEARS OF EXPERIENCE</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="mb-16">
+                <h3 class="text-3xl font-bold text-center mb-12">
+                    Technical <span class="text-primary">Skills</span>
+                </h3>
+                <p class="text-center text-muted-foreground mb-12">A comprehensive overview of my technical expertise with proficiency levels</p>
+                
+                <div class="grid grid-cols-2 gap-6 mb-8">
+                    <div class="skill-card glass-effect rounded-xl p-6 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-code text-3xl text-primary mb-2"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">VS Code</h4>
+                        <div class="relative w-20 h-20 mx-auto mb-4">
+                            <svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="95 100" class="text-primary progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">95%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground">Proficiency: 95%</p>
+                    </div>
+
+                    <div class="skill-card glass-effect rounded-xl p-6 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-code text-3xl text-accent mb-2"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Dart</h4>
+                        <div class="relative w-20 h-20 mx-auto mb-4">
+                            <svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="95 100" class="text-accent progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">95%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground">Proficiency: 95%</p>
+                    </div>
+
+                    <div class="skill-card glass-effect rounded-xl p-6 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-mobile-alt text-3xl text-blue-400 mb-2"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Flutter</h4>
+                        <div class="relative w-20 h-20 mx-auto mb-4">
+                            <svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="92 100" class="text-blue-400 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">92%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground">Proficiency: 92%</p>
+                    </div>
+
+                    <div class="skill-card glass-effect rounded-xl p-6 text-center">
+                        <div class="mb-4">
+                            <i class="fab fa-python text-3xl text-yellow-400 mb-2"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Python</h4>
+                        <div class="relative w-20 h-20 mx-auto mb-4">
+                            <svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="90 100" class="text-yellow-400 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">90%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground">Proficiency: 90%</p>
+                    </div>
+
+                    <div class="skill-card glass-effect rounded-xl p-6 text-center">
+                        <div class="mb-4">
+                            <i class="fab fa-git-alt text-3xl text-orange-500 mb-2"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Git</h4>
+                        <div class="relative w-20 h-20 mx-auto mb-4">
+                            <svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="90 100" class="text-orange-500 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">90%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground">Proficiency: 90%</p>
+                    </div>
+
+                    <div class="skill-card glass-effect rounded-xl p-6 text-center">
+                        <div class="mb-4">
+                            <i class="fab fa-github text-3xl text-foreground mb-2"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">GitHub</h4>
+                        <div class="relative w-20 h-20 mx-auto mb-4">
+                            <svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="88 100" class="text-foreground progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">88%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground">Proficiency: 88%</p>
+                    </div>
+                </div>
+
+                <!-- Additional Skills Grid -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="skill-card glass-effect rounded-xl p-6 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-database text-3xl text-blue-500 mb-2"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">MySQL</h4>
+                        <div class="relative w-20 h-20 mx-auto mb-4">
+                            <svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="88 100" class="text-blue-500 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">88%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground">Proficiency: 88%</p>
+                    </div>
+
+                    <div class="skill-card glass-effect rounded-xl p-6 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-fire text-3xl text-orange-400 mb-2"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Firebase</h4>
+                        <div class="relative w-20 h-20 mx-auto mb-4">
+                            <svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="85 100" class="text-orange-400 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">85%</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground">Proficiency: 85%</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="mb-16">
+                <h3 class="text-3xl font-bold text-center mb-12">
+                    My <span class="text-primary">Projects</span>
+                </h3>
+                
+                <div class="space-y-6">
+                    <!-- Shopping App Project -->
+                    <div class="glass-effect rounded-xl p-6 hover:border-primary/50 transition-all duration-300">
+                        <!-- Mobile app shopping interface on a smartphone -->
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" 
+                             alt="Shopping app interface" 
+                             class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h4 class="text-xl font-bold mb-2">Shopping App</h4>
+                        <p class="text-muted-foreground mb-4">Easily browse a wide selection of grocery items—from fruits and vegetables to pantry staples, snacks, and household goods. Add products to your cart, review your choices, and check out securely.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Flutter</span>
+                            <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">Dart</span>
+                            <span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded-full text-sm">Firebase</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/shopping-app" class="text-primary hover:underline">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+
+                    <!-- Recipe App Project -->
+                    <div class="glass-effect rounded-xl p-6 hover:border-primary/50 transition-all duration-300">
+                        <!-- Recipe app interface showing cooking recipes -->
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" 
+                             alt="Recipe app interface" 
+                             class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h4 class="text-xl font-bold mb-2">Recipe App</h4>
+                        <p class="text-muted-foreground mb-4">Discover, cook, and enjoy delicious recipes from around the world! Our Recipe App brings you an ever-growing collection of easy-to-follow recipes across multiple cuisines.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-purple-500/20 text-purple-500 px-3 py-1 rounded-full text-sm">API</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/recipe-app" class="text-primary hover:underline">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+
+                    <!-- Face Recognition Project -->
+                    <div class="glass-effect rounded-xl p-6 hover:border-primary/50 transition-all duration-300">
+                        <!-- AI face recognition technology interface -->
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" 
+                             alt="Face recognition technology" 
+                             class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h4 class="text-xl font-bold mb-2">Face Recognition System</h4>
+                        <p class="text-muted-foreground mb-4">Advanced face recognition system using computer vision and machine learning techniques for secure authentication and identification.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-400/20 text-yellow-400 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full text-sm">OpenCV</span>
+                            <span class="bg-blue-500/20 text-blue-500 px-3 py-1 rounded-full text-sm">ML</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/face-recognition" class="text-primary hover:underline">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="mb-16">
+                <h3 class="text-3xl font-bold text-center mb-4">
+                    Let's Work <span class="text-primary">Together!</span>
+                </h3>
+                <p class="text-center text-muted-foreground mb-8">ajiteshsinha2004@gmail.com</p>
+                
+                <div class="glass-effect rounded-xl p-6">
+                    <form class="space-y-6" data-mock="true">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">FULL NAME <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Your Full Name" 
+                                       class="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" 
+                                       data-implementation="Connect to form handler">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">EMAIL <span class="text-red-500">*</span></label>
+                                <input type="email" placeholder="Your email address" 
+                                       class="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" 
+                                       data-implementation="Email validation required">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">PHONE (optional)</label>
+                                <input type="tel" placeholder="Your number phone" 
+                                       class="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">SUBJECT <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Enter subject" 
+                                       class="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">YOUR BUDGET (optional)</label>
+                            <input type="text" placeholder="A range budget for your project" 
+                                   class="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">MESSAGE</label>
+                            <textarea rows="5" placeholder="Write your message here ..." 
+                                      class="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-primary hover:bg-primary/80 text-primary-foreground py-3 px-6 rounded-lg transition-colors font-medium"
+                                data-event="click:handleSubmit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Desktop Layout -->
+    <div class="desktop-layout min-h-screen flex">
+        <!-- Fixed Profile Card (Left Side) -->
+        <div class="w-80 fixed left-0 top-0 bottom-0 p-6 flex flex-col justify-center">
+            <div class="glass-effect rounded-3xl p-8 text-center animate-fadeInUp">
+                <!-- Professional headshot of a young Indian mobile app developer -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
+                     alt="Ajitesh Sinha - Mobile App Developer" 
+                     class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-primary/50 object-cover">
+                
+                <h1 class="text-2xl font-bold text-foreground mb-2">Ajitesh Sinha</h1>
+                <p class="text-primary mb-4 font-medium">Mobile App Developer</p>
+                <p class="text-sm text-muted-foreground mb-2">ajiteshsinha2004@gmail.com</p>
+                <p class="text-sm text-muted-foreground mb-8">Greater Noida<br>Uttar Pradesh, India</p>
+                
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-4 mb-8">
+                    <a href="https://github.com/AjiteshSinha17" 
+                       class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-primary transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/AjiteshSinha" 
+                       class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-primary transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+                </div>
+                
+                <!-- CTA Button -->
+                <button class="w-full bg-muted hover:bg-primary text-foreground py-4 px-6 rounded-xl transition-all duration-300 font-medium hover:scale-105"
+                        data-implementation="Open contact form or email client">
+                    <i class="fas fa-envelope mr-2"></i>
+                    HIRE ME!
+                </button>
+            </div>
+        </div>
+
+        <!-- Vertical Navigation Bar -->
+        <div class="fixed right-6 top-1/2 transform -translate-y-1/2 z-50">
+            <div class="glass-effect rounded-full p-4 space-y-6">
+                <a href="#home" class="nav-link block text-muted-foreground hover:text-primary transition-colors p-2">
+                    <i class="fas fa-home text-lg"></i>
+                </a>
+                <a href="#about" class="nav-link block text-muted-foreground hover:text-primary transition-colors p-2">
+                    <i class="fas fa-user text-lg"></i>
+                </a>
+                <a href="#portfolio" class="nav-link block text-muted-foreground hover:text-primary transition-colors p-2">
+                    <i class="fas fa-briefcase text-lg"></i>
+                </a>
+                <a href="#skills" class="nav-link block text-muted-foreground hover:text-primary transition-colors p-2">
+                    <i class="fas fa-cogs text-lg"></i>
+                </a>
+                <a href="#blog" class="nav-link block text-muted-foreground hover:text-primary transition-colors p-2">
+                    <i class="fas fa-blog text-lg"></i>
+                </a>
+                <a href="#projects" class="nav-link block text-muted-foreground hover:text-primary transition-colors p-2">
+                    <i class="fas fa-folder text-lg"></i>
+                </a>
+                <a href="#contact" class="nav-link block text-muted-foreground hover:text-primary transition-colors p-2">
+                    <i class="fas fa-envelope text-lg"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content Area (Right Side) -->
+        <div class="flex-1 ml-80 p-12">
+            <!-- Hero Section -->
+            <section id="home" class="min-h-screen flex items-center">
+                <div class="max-w-4xl">
+                    <!-- Intro Badge -->
+                    <div class="inline-block bg-secondary/50 px-6 py-3 rounded-full text-sm mb-8 animate-fadeInUp">
+                        <i class="fas fa-user mr-2"></i>
+                        INTRODUCE
+                    </div>
+                    
+                    <!-- Hero Text -->
+                    <h2 class="text-6xl font-bold leading-tight mb-8 animate-fadeInUp" style="animation-delay: 0.2s;">
+                        Say Hi from Ajitesh,<br>
+                        <span class="text-primary">Mobile App Developer</span>
+                    </h2>
+                    
+                    <p class="text-xl text-muted-foreground mb-12 max-w-2xl animate-fadeInUp" style="animation-delay: 0.4s;">
+                        I design and code beautifully complex things simply and I love what I do. Just simple like that!
+                    </p>
+                    
+                    <!-- Experience Counter and Projects Navigation -->
+                    <div class="flex items-center space-x-16 animate-fadeInUp" style="animation-delay: 0.6s;">
+                        <div class="text-center">
+                            <div class="text-7xl font-bold text-primary mb-2">2+</div>
+                            <div class="text-sm text-muted-foreground">YEARS OF<br>EXPERIENCE</div>
+                        </div>
+                        
+                        <!-- Rotating Projects Circle -->
+                        <div class="relative">
+                            <div class="w-32 h-32 border-2 border-dashed border-primary/30 rounded-full animate-rotate flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-sm font-bold text-primary">MY</div>
+                                    <div class="text-sm font-bold text-primary">PROJECTS</div>
+                                </div>
+                            </div>
+                            <div class="absolute -top-2 left-1/2 transform -translate-x-1/2">
+                                <div class="w-4 h-4 bg-primary rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="min-h-screen py-20">
+                <div class="text-center mb-16">
+                    <h3 class="text-5xl font-bold mb-4">
+                        Technical <span class="text-primary">Skills</span>
+                    </h3>
+                    <p class="text-xl text-muted-foreground">A comprehensive overview of my technical expertise with proficiency levels</p>
+                </div>
+                
+                <!-- Skills Grid -->
+                <div class="grid grid-cols-3 gap-8 mb-12">
+                    <!-- VS Code -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fas fa-code text-4xl text-primary mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">VS Code</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="95 100" class="text-primary progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">95%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 95%</p>
+                    </div>
+
+                    <!-- Dart -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fas fa-code text-4xl text-accent mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Dart</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="95 100" class="text-accent progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">95%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 95%</p>
+                    </div>
+
+                    <!-- Flutter -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fas fa-mobile-alt text-4xl text-blue-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Flutter</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="92 100" class="text-blue-400 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">92%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 92%</p>
+                    </div>
+
+                    <!-- Python -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fab fa-python text-4xl text-yellow-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Python</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="90 100" class="text-yellow-400 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">90%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 90%</p>
+                    </div>
+
+                    <!-- Git -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fab fa-git-alt text-4xl text-orange-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Git</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="90 100" class="text-orange-500 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">90%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 90%</p>
+                    </div>
+
+                    <!-- GitHub -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fab fa-github text-4xl text-foreground mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">GitHub</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="88 100" class="text-foreground progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">88%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 88%</p>
+                    </div>
+                </div>
+
+                <!-- Additional Skills Row -->
+                <div class="grid grid-cols-3 gap-8">
+                    <!-- MySQL -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fas fa-database text-4xl text-blue-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">MySQL</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="88 100" class="text-blue-500 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">88%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 88%</p>
+                    </div>
+
+                    <!-- DSA -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fas fa-brain text-4xl text-purple-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">DSA</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="87 100" class="text-purple-500 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">87%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 87%</p>
+                    </div>
+
+                    <!-- Firebase -->
+                    <div class="skill-card glass-effect rounded-2xl p-8 text-center group">
+                        <div class="mb-6">
+                            <i class="fas fa-fire text-4xl text-orange-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Firebase</h4>
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 100" class="text-secondary"/>
+                                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="85 100" class="text-orange-400 progress-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-2xl font-bold">85%</span>
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground">Proficiency: 85%</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="min-h-screen py-20">
+                <div class="text-center mb-16">
+                    <h3 class="text-5xl font-bold mb-4">
+                        My <span class="text-primary">Projects</span>
+                    </h3>
+                    <p class="text-xl text-muted-foreground">Showcase of my recent mobile app development work</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Shopping App Project -->
+                    <div class="glass-effect rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group">
+                        <!-- Mobile app shopping interface on a smartphone -->
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300&q=80" 
+                             alt="Shopping app interface" 
+                             class="w-full h-48 object-cover rounded-xl mb-6 group-hover:scale-105 transition-transform">
+                        <h4 class="text-2xl font-bold mb-4">Shopping App</h4>
+                        <p class="text-muted-foreground mb-6">Easily browse a wide selection of grocery items—from fruits and vegetables to pantry staples, snacks, and household goods. Add products to your cart, review your choices, and check out securely.</p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium">Flutter</span>
+                            <span class="bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium">Dart</span>
+                            <span class="bg-yellow-500/20 text-yellow-500 px-4 py-2 rounded-full text-sm font-medium">Firebase</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/shopping-app" 
+                           class="inline-flex items-center text-primary hover:underline font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+
+                    <!-- Recipe App Project -->
+                    <div class="glass-effect rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group">
+                        <!-- Recipe app interface showing cooking recipes -->
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300&q=80" 
+                             alt="Recipe app interface" 
+                             class="w-full h-48 object-cover rounded-xl mb-6 group-hover:scale-105 transition-transform">
+                        <h4 class="text-2xl font-bold mb-4">Recipe App</h4>
+                        <p class="text-muted-foreground mb-6">Discover, cook, and enjoy delicious recipes from around the world! Our Recipe App brings you an ever-growing collection of easy-to-follow recipes across multiple cuisines.</p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium">JavaScript</span>
+                            <span class="bg-green-500/20 text-green-500 px-4 py-2 rounded-full text-sm font-medium">React</span>
+                            <span class="bg-purple-500/20 text-purple-500 px-4 py-2 rounded-full text-sm font-medium">API</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/recipe-app" 
+                           class="inline-flex items-center text-primary hover:underline font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+
+                    <!-- Face Recognition Project -->
+                    <div class="glass-effect rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group">
+                        <!-- AI face recognition technology interface -->
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300&q=80" 
+                             alt="Face recognition technology" 
+                             class="w-full h-48 object-cover rounded-xl mb-6 group-hover:scale-105 transition-transform">
+                        <h4 class="text-2xl font-bold mb-4">Face Recognition System</h4>
+                        <p class="text-muted-foreground mb-6">Advanced face recognition system using computer vision and machine learning techniques for secure authentication and identification.</p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-yellow-400/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-medium">Python</span>
+                            <span class="bg-red-500/20 text-red-500 px-4 py-2 rounded-full text-sm font-medium">OpenCV</span>
+                            <span class="bg-blue-500/20 text-blue-500 px-4 py-2 rounded-full text-sm font-medium">ML</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/face-recognition" 
+                           class="inline-flex items-center text-primary hover:underline font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+
+                    <!-- Expense Tracker Project -->
+                    <div class="glass-effect rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group">
+                        <!-- Mobile app expense tracking interface -->
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300&q=80" 
+                             alt="Expense tracker app interface" 
+                             class="w-full h-48 object-cover rounded-xl mb-6 group-hover:scale-105 transition-transform">
+                        <h4 class="text-2xl font-bold mb-4">Expense Tracker</h4>
+                        <p class="text-muted-foreground mb-6">Track your daily expenses and manage your budget effectively with this intuitive expense tracking application.</p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium">Flutter</span>
+                            <span class="bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium">Dart</span>
+                            <span class="bg-green-500/20 text-green-500 px-4 py-2 rounded-full text-sm font-medium">SQLite</span>
+                        </div>
+                        <a href="https://github.com/AjiteshSinha17/expense-tracker" 
+                           class="inline-flex items-center text-primary hover:underline font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="min-h-screen py-20">
+                <div class="text-center mb-16">
+                    <h3 class="text-5xl font-bold mb-4">
+                        Let's Work <span class="text-primary">Together!</span>
+                    </h3>
+                    <p class="text-xl text-muted-foreground mb-4">ajiteshsinha2004@gmail.com</p>
+                    <a href="#" class="text-primary hover:underline">Resume Here</a>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="glass-effect rounded-3xl p-12">
+                        <form class="grid grid-cols-1 md:grid-cols-2 gap-8" data-mock="true">
+                            <div>
+                                <label class="block text-sm font-medium mb-3">FULL NAME <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Your Full Name" 
+                                       class="w-full bg-secondary/50 border border-border rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary text-lg" 
+                                       data-implementation="Connect to form handler">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-3">EMAIL <span class="text-red-500">*</span></label>
+                                <input type="email" placeholder="Your email address" 
+                                       class="w-full bg-secondary/50 border border-border rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary text-lg" 
+                                       data-implementation="Email validation required">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-3">PHONE (optional)</label>
+                                <input type="tel" placeholder="Your number phone" 
+                                       class="w-full bg-secondary/50 border border-border rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary text-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-3">SUBJECT <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Enter subject" 
+                                       class="w-full bg-secondary/50 border border-border rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary text-lg">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium mb-3">YOUR BUDGET (optional)</label>
+                                <input type="text" placeholder="A range budget for your project" 
+                                       class="w-full bg-secondary/50 border border-border rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary text-lg">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium mb-3">MESSAGE</label>
+                                <textarea rows="6" placeholder="Write your message here ..." 
+                                          class="w-full bg-secondary/50 border border-border rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary text-lg resize-none"></textarea>
+                            </div>
+                            <div class="md:col-span-2">
+                                <button type="submit" 
+                                        class="w-full bg-primary hover:bg-primary/80 text-primary-foreground py-4 px-8 rounded-xl transition-all duration-300 font-medium text-lg hover:scale-105"
+                                        data-event="click:handleSubmit">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate progress circles on scroll
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressCircles = entry.target.querySelectorAll('.progress-circle');
+                    progressCircles.forEach(circle => {
+                        const dashArray = circle.getAttribute('stroke-dasharray');
+                        if (dashArray) {
+                            circle.style.strokeDasharray = dashArray;
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe skills section
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            progressObserver.observe(skillsSection);
+        }
+
+        // Add intersection observer for fade-in animations
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe all skill cards for animations
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            fadeObserver.observe(card);
+        });
+
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary');
+                link.classList.add('text-muted-foreground');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-muted-foreground');
+                    link.classList.add('text-primary');
+                }
+            });
+        });
+
+        // Form submission handler (placeholder)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement form submission logic
+                console.log('Form submitted - implement backend integration');
+                alert('Thank you for your message! I will get back to you soon.');
+            });
+        });
+
+        // Hire me button click handler
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('HIRE ME')) {
+                button.addEventListener('click', function() {
+                    // TODO: Implement hire me action (open contact form or email client)
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

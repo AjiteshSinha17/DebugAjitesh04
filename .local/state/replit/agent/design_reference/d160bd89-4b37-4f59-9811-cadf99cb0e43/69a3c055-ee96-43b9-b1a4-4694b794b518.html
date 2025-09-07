@@ -1,0 +1,1088 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajitesh Sinha - Mobile App Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "system-ui", "sans-serif"],
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --background: hsl(220 14% 96%);
+            --foreground: hsl(220 9% 9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(220 9% 9%);
+            --popover: hsl(0 0% 100%);
+            --popover-foreground: hsl(220 9% 9%);
+            --primary: hsl(220 91% 56%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(220 14% 91%);
+            --secondary-foreground: hsl(220 9% 9%);
+            --muted: hsl(220 14% 91%);
+            --muted-foreground: hsl(220 9% 46%);
+            --accent: hsl(262 83% 58%);
+            --accent-foreground: hsl(0 0% 100%);
+            --destructive: hsl(0 84% 60%);
+            --destructive-foreground: hsl(0 0% 100%);
+            --border: hsl(220 13% 91%);
+            --input: hsl(220 13% 91%);
+            --ring: hsl(220 91% 56%);
+            --radius: 8px;
+        }
+        
+        .dark {
+            --background: hsl(220 13% 9%);
+            --foreground: hsl(0 0% 95%);
+            --card: hsl(220 13% 11%);
+            --card-foreground: hsl(0 0% 95%);
+            --popover: hsl(220 13% 11%);
+            --popover-foreground: hsl(0 0% 95%);
+            --primary: hsl(220 91% 56%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(220 13% 16%);
+            --secondary-foreground: hsl(0 0% 95%);
+            --muted: hsl(220 13% 16%);
+            --muted-foreground: hsl(220 9% 63%);
+            --accent: hsl(262 83% 58%);
+            --accent-foreground: hsl(0 0% 100%);
+            --destructive: hsl(0 84% 60%);
+            --destructive-foreground: hsl(0 0% 100%);
+            --border: hsl(220 13% 16%);
+            --input: hsl(220 13% 16%);
+            --ring: hsl(220 91% 56%);
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .tech-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .tech-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .mobile-nav {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .stagger-delay-1 { animation-delay: 0.1s; }
+        .stagger-delay-2 { animation-delay: 0.2s; }
+        .stagger-delay-3 { animation-delay: 0.3s; }
+        .stagger-delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- @COMPONENT: Navigation -->
+    <nav class="fixed top-0 w-full bg-card/80 backdrop-blur-lg border-b border-border z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <span class="text-primary-foreground font-bold text-sm">AS</span>
+                    </div>
+                    <span class="font-semibold text-foreground">Ajitesh Sinha</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-muted-foreground hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="text-muted-foreground hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="text-muted-foreground hover:text-primary transition-colors">Skills</a>
+                    <a href="#projects" class="text-muted-foreground hover:text-primary transition-colors">Projects</a>
+                    <a href="#contact" class="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-secondary transition-colors">
+                        <i class="fas fa-moon text-muted-foreground"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors">
+                    <i class="fas fa-bars text-foreground"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-nav" class="mobile-nav fixed top-0 right-0 w-64 h-full bg-card border-l border-border md:hidden z-50">
+            <div class="flex justify-end p-4">
+                <button id="mobile-close-btn" class="p-2 rounded-lg hover:bg-secondary transition-colors">
+                    <i class="fas fa-times text-foreground"></i>
+                </button>
+            </div>
+            <div class="px-4 py-2 space-y-4">
+                <a href="#home" class="block text-foreground hover:text-primary transition-colors py-2">Home</a>
+                <a href="#about" class="block text-foreground hover:text-primary transition-colors py-2">About</a>
+                <a href="#skills" class="block text-foreground hover:text-primary transition-colors py-2">Skills</a>
+                <a href="#projects" class="block text-foreground hover:text-primary transition-colors py-2">Projects</a>
+                <a href="#contact" class="block text-foreground hover:text-primary transition-colors py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+        <!-- Background pattern for modern workspace -->
+        <div class="absolute inset-0 hero-gradient opacity-5"></div>
+        <!-- Modern mobile app development workspace with multiple smartphones and development tools -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080');"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 animate-fade-in-up">
+                    <div class="space-y-4">
+                        <p class="text-primary font-medium text-lg">Hello, I'm</p>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
+                            Ajitesh Sinha
+                        </h1>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-muted-foreground">
+                            Mobile App Developer
+                        </h2>
+                        <p class="text-lg text-muted-foreground max-w-lg leading-relaxed">
+                            Passionate about building powerful, user-friendly Android and iOS applications. 
+                            Expert in Flutter, with a strong background in ethical hacking and cloud computing.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-all transform hover:scale-105">
+                            <i class="fas fa-download mr-2"></i>Download Resume
+                        </button>
+                        <a href="#projects" class="border border-border text-foreground px-8 py-3 rounded-lg font-medium hover:bg-secondary transition-all">
+                            View Projects
+                        </a>
+                    </div>
+                    
+                    <div class="flex space-x-4 pt-4">
+                        <a href="https://github.com/AjiteshSinha17" class="text-muted-foreground hover:text-primary transition-colors text-xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/AjiteshSinha" class="text-muted-foreground hover:text-primary transition-colors text-xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://instagram.com/ajitesh.sinha18" class="text-muted-foreground hover:text-primary transition-colors text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:ajiteshsinha2004@gmail.com" class="text-muted-foreground hover:text-primary transition-colors text-xl">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative animate-fade-in-up stagger-delay-2">
+                    <div class="relative w-full max-w-md mx-auto">
+                        <!-- Professional tech developer headshot in modern workspace -->
+                        <img src="https://avatars.githubusercontent.com/u/89742421?v=4" 
+                             alt="Ajitesh Sinha - Mobile App Developer" 
+                             class="w-64 h-64 rounded-2xl mx-auto object-cover shadow-2xl">
+                        
+                        <!-- Floating Mobile Device Mockups -->
+                        <div class="absolute -top-4 -right-4 w-16 h-32 bg-card rounded-lg shadow-lg border border-border flex items-center justify-center transform rotate-12">
+                            <div class="w-12 h-24 bg-primary/10 rounded flex flex-col justify-between p-1">
+                                <div class="w-full h-1 bg-primary/30 rounded"></div>
+                                <div class="space-y-1">
+                                    <div class="w-full h-1 bg-primary/20 rounded"></div>
+                                    <div class="w-3/4 h-1 bg-primary/20 rounded"></div>
+                                    <div class="w-full h-1 bg-primary/20 rounded"></div>
+                                </div>
+                                <div class="w-8 h-2 bg-primary rounded mx-auto"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-4 -left-4 w-16 h-32 bg-card rounded-lg shadow-lg border border-border flex items-center justify-center transform -rotate-12">
+                            <div class="w-12 h-24 bg-accent/10 rounded flex flex-col justify-between p-1">
+                                <div class="w-full h-1 bg-accent/30 rounded"></div>
+                                <div class="space-y-1">
+                                    <div class="w-full h-1 bg-accent/20 rounded"></div>
+                                    <div class="w-2/3 h-1 bg-accent/20 rounded"></div>
+                                    <div class="w-full h-1 bg-accent/20 rounded"></div>
+                                </div>
+                                <div class="w-8 h-2 bg-accent rounded mx-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: About Section -->
+    <section id="about" class="py-20 bg-secondary/50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">About Me</h2>
+                        <div class="space-y-4 text-muted-foreground leading-relaxed">
+                            <p>
+                                🚀 Hey there! I'm a passionate mobile app developer specializing in Android and iOS applications. 
+                                With expertise in Flutter and Dart, I create powerful, user-friendly mobile experiences that delight users.
+                            </p>
+                            <p>
+                                🔐 As an ethical hacker at heart, I bring a unique security-first mindset to mobile development, 
+                                ensuring that the applications I build are not just functional, but also secure and robust.
+                            </p>
+                            <p>
+                                ☁️ I'm constantly expanding my skills across the tech stack - from cloud computing and DSA 
+                                to backend development, mastering APIs, databases, and server-side logic.
+                            </p>
+                            <p>
+                                💡 I'm passionate about open source contribution and love collaborating with the dev community 
+                                to build something remarkable. Let's connect and create amazing mobile experiences together!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-4 bg-card rounded-lg border border-border">
+                            <div class="text-2xl font-bold text-primary">5+</div>
+                            <div class="text-muted-foreground">Projects</div>
+                        </div>
+                        <div class="text-center p-4 bg-card rounded-lg border border-border">
+                            <div class="text-2xl font-bold text-primary">2+</div>
+                            <div class="text-muted-foreground">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <!-- Modern smartphone displaying various app interfaces on desk -->
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                         alt="Mobile app interfaces on smartphones" 
+                         class="w-full rounded-2xl shadow-2xl">
+                    
+                    <!-- Floating Tech Stack Indicators -->
+                    <div class="absolute top-4 right-4 bg-card/90 backdrop-blur-sm rounded-lg p-3 border border-border">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                            <div class="w-3 h-3 bg-destructive rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About Section -->
+
+    <!-- @COMPONENT: Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">Skills & Technologies</h2>
+                <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    Here are the technologies and tools I work with to build amazing mobile applications
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mobile Development -->
+                <div class="bg-card rounded-xl p-6 border border-border card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground">Mobile Development</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Flutter</span>
+                        <span class="tech-badge bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Dart</span>
+                        <span class="tech-badge bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Android</span>
+                        <span class="tech-badge bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">iOS</span>
+                    </div>
+                </div>
+                
+                <!-- Programming Languages -->
+                <div class="bg-card rounded-xl p-6 border border-border card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-code text-accent text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground">Programming</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                        <span class="tech-badge bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">C++</span>
+                        <span class="tech-badge bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">C</span>
+                        <span class="tech-badge bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                    </div>
+                </div>
+                
+                <!-- Backend & Database -->
+                <div class="bg-card rounded-xl p-6 border border-border card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-server text-destructive text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground">Backend & Cloud</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-destructive/10 text-destructive px-3 py-1 rounded-full text-sm font-medium">Firebase</span>
+                        <span class="tech-badge bg-destructive/10 text-destructive px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                        <span class="tech-badge bg-destructive/10 text-destructive px-3 py-1 rounded-full text-sm font-medium">Flask</span>
+                        <span class="tech-badge bg-destructive/10 text-destructive px-3 py-1 rounded-full text-sm font-medium">REST APIs</span>
+                    </div>
+                </div>
+                
+                <!-- Tools & Others -->
+                <div class="bg-card rounded-xl p-6 border border-border card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-tools text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground">Tools & Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Git</span>
+                        <span class="tech-badge bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">GitHub</span>
+                        <span class="tech-badge bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Linux</span>
+                        <span class="tech-badge bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Bash</span>
+                    </div>
+                </div>
+                
+                <!-- Data Science -->
+                <div class="bg-card rounded-xl p-6 border border-border card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-chart-bar text-accent text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground">Data Science</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">NumPy</span>
+                        <span class="tech-badge bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Pandas</span>
+                        <span class="tech-badge bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">OpenCV</span>
+                        <span class="tech-badge bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">ML</span>
+                    </div>
+                </div>
+                
+                <!-- Security -->
+                <div class="bg-card rounded-xl p-6 border border-border card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-destructive text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground">Cybersecurity</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-destructive/10 text-destructive px-3 py-1 rounded-full text-sm font-medium">Ethical Hacking</span>
+                        <span class="tech-badge bg-destructive/10 text-destructive px-3 py-1 rounded-full text-sm font-medium">Penetration Testing</span>
+                        <span class="tech-badge bg-destructive/10 text-destructive px-3 py-1 rounded-full text-sm font-medium">Security Auditing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Skills Section -->
+
+    <!-- @COMPONENT: Projects Section -->
+    <section id="projects" class="py-20 bg-secondary/50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">Featured Projects</h2>
+                <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    Explore my latest mobile applications and development projects
+                </p>
+            </div>
+            
+            <!-- Project Filter -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-card rounded-lg p-1 border border-border">
+                    <button class="filter-btn active px-4 py-2 rounded-md text-sm font-medium transition-all" data-filter="all">
+                        All Projects
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all" data-filter="mobile">
+                        Mobile Apps
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all" data-filter="web">
+                        Web Projects
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all" data-filter="ai">
+                        AI/ML
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Shopping App -->
+                <div class="project-card bg-card rounded-xl overflow-hidden border border-border card-hover" data-category="mobile">
+                    <!-- Colorful grocery shopping app interface showing fruits and vegetables -->
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Shopping app interface" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold text-foreground">Shopping App</h3>
+                            <a href="https://github.com/AjiteshSinha17/shopping-app" class="text-muted-foreground hover:text-primary transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                        </div>
+                        <p class="text-muted-foreground mb-4 text-sm">
+                            Easily browse a wide selection of grocery items with secure checkout functionality. 
+                            Built with modern mobile development practices.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">C++</span>
+                            <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs">Mobile</span>
+                            <span class="bg-destructive/10 text-destructive px-2 py-1 rounded text-xs">E-commerce</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </button>
+                            <a href="https://github.com/AjiteshSinha17/shopping-app" class="flex-1 border border-border text-foreground py-2 rounded-lg text-sm font-medium text-center hover:bg-secondary transition-colors">
+                                <i class="fab fa-github mr-2"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recipe App -->
+                <div class="project-card bg-card rounded-xl overflow-hidden border border-border card-hover" data-category="mobile">
+                    <!-- Beautiful food recipe app showing colorful dishes and cooking interface -->
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Recipe app interface with food dishes" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold text-foreground">Recipe App</h3>
+                            <a href="https://github.com/AjiteshSinha17/recipe-app" class="text-muted-foreground hover:text-primary transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                        </div>
+                        <p class="text-muted-foreground mb-4 text-sm">
+                            Discover, cook, and enjoy delicious recipes from around the world with an ever-growing 
+                            collection across multiple cuisines.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">JavaScript</span>
+                            <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs">Food</span>
+                            <span class="bg-destructive/10 text-destructive px-2 py-1 rounded text-xs">Lifestyle</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </button>
+                            <a href="https://github.com/AjiteshSinha17/recipe-app" class="flex-1 border border-border text-foreground py-2 rounded-lg text-sm font-medium text-center hover:bg-secondary transition-colors">
+                                <i class="fab fa-github mr-2"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Face Recognition -->
+                <div class="project-card bg-card rounded-xl overflow-hidden border border-border card-hover" data-category="ai">
+                    <!-- Advanced face recognition technology with AI interface -->
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="AI face recognition interface" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold text-foreground">Face Recognition</h3>
+                            <a href="https://github.com/AjiteshSinha17/face-recognition" class="text-muted-foreground hover:text-primary transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                        </div>
+                        <p class="text-muted-foreground mb-4 text-sm">
+                            Advanced face recognition system using OpenCV and machine learning algorithms 
+                            for real-time detection and identification.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">C++</span>
+                            <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs">OpenCV</span>
+                            <span class="bg-destructive/10 text-destructive px-2 py-1 rounded text-xs">AI/ML</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </button>
+                            <a href="https://github.com/AjiteshSinha17/face-recognition" class="flex-1 border border-border text-foreground py-2 rounded-lg text-sm font-medium text-center hover:bg-secondary transition-colors">
+                                <i class="fab fa-github mr-2"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expense Tracker -->
+                <div class="project-card bg-card rounded-xl overflow-hidden border border-border card-hover" data-category="mobile">
+                    <!-- Modern expense tracking app interface with charts and financial data -->
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Expense tracking app dashboard" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold text-foreground">Expense Tracker</h3>
+                            <a href="https://github.com/AjiteshSinha17/expense-tracker" class="text-muted-foreground hover:text-primary transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                        </div>
+                        <p class="text-muted-foreground mb-4 text-sm">
+                            Personal finance management app with expense tracking, budgeting features, 
+                            and detailed analytics to help users manage their finances.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">C++</span>
+                            <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs">Finance</span>
+                            <span class="bg-destructive/10 text-destructive px-2 py-1 rounded text-xs">Analytics</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </button>
+                            <a href="https://github.com/AjiteshSinha17/expense-tracker" class="flex-1 border border-border text-foreground py-2 rounded-lg text-sm font-medium text-center hover:bg-secondary transition-colors">
+                                <i class="fab fa-github mr-2"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bagify App -->
+                <div class="project-card bg-card rounded-xl overflow-hidden border border-border card-hover" data-category="mobile">
+                    <!-- Elegant bag shopping app interface with luxury handbags and accessories -->
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Bagify app shopping interface" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold text-foreground">Bagify App</h3>
+                            <a href="https://github.com/AjiteshSinha17/bagify-app" class="text-muted-foreground hover:text-primary transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                        </div>
+                        <p class="text-muted-foreground mb-4 text-sm">
+                            Premium bag shopping mobile application with elegant UI/UX design, 
+                            featuring product catalogs and secure payment integration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">C++</span>
+                            <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs">E-commerce</span>
+                            <span class="bg-destructive/10 text-destructive px-2 py-1 rounded text-xs">Fashion</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </button>
+                            <a href="https://github.com/AjiteshSinha17/bagify-app" class="flex-1 border border-border text-foreground py-2 rounded-lg text-sm font-medium text-center hover:bg-secondary transition-colors">
+                                <i class="fab fa-github mr-2"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quiz App -->
+                <div class="project-card bg-card rounded-xl overflow-hidden border border-border card-hover" data-category="mobile">
+                    <!-- Interactive quiz app interface with modern question and answer layout -->
+                    <img src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Quiz app user interface" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-semibold text-foreground">Quiz App</h3>
+                            <a href="https://github.com/AjiteshSinha17/quiz-app" class="text-muted-foreground hover:text-primary transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                        </div>
+                        <p class="text-muted-foreground mb-4 text-sm">
+                            Interactive quiz application with multiple categories, scoring system, 
+                            and engaging user interface for educational and entertainment purposes.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">C++</span>
+                            <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs">Education</span>
+                            <span class="bg-destructive/10 text-destructive px-2 py-1 rounded text-xs">Interactive</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </button>
+                            <a href="https://github.com/AjiteshSinha17/quiz-app" class="flex-1 border border-border text-foreground py-2 rounded-lg text-sm font-medium text-center hover:bg-secondary transition-colors">
+                                <i class="fab fa-github mr-2"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View All Projects Link -->
+            <div class="text-center mt-12">
+                <a href="https://github.com/AjiteshSinha17?tab=repositories" class="inline-flex items-center bg-card text-foreground px-6 py-3 rounded-lg border border-border hover:bg-secondary transition-all">
+                    <i class="fab fa-github mr-2"></i>
+                    View All Projects on GitHub
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Projects Section -->
+
+    <!-- @COMPONENT: GitHub Stats -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">GitHub Activity</h2>
+                <p class="text-muted-foreground">My coding journey and contributions</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- GitHub Stats Card -->
+                <div class="bg-card rounded-xl p-6 border border-border card-hover">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="https://avatars.githubusercontent.com/u/89742421?v=4" 
+                             alt="Ajitesh Sinha GitHub Avatar" 
+                             class="w-12 h-12 rounded-full">
+                        <div>
+                            <h3 class="text-lg font-semibold text-foreground">AjiteshSinha17</h3>
+                            <p class="text-muted-foreground text-sm">Greater Noida</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary" data-bind="repositoryCount">7</div>
+                            <div class="text-muted-foreground text-sm">Repositories</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent" data-bind="followerCount">1</div>
+                            <div class="text-muted-foreground text-sm">Followers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-destructive" data-bind="followingCount">6</div>
+                            <div class="text-muted-foreground text-sm">Following</div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://github.com/AjiteshSinha17" class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium text-center block hover:bg-primary/90 transition-colors">
+                        <i class="fab fa-github mr-2"></i>Visit GitHub Profile
+                    </a>
+                </div>
+                
+                <!-- Contribution Calendar Placeholder -->
+                <div class="bg-card rounded-xl p-6 border border-border card-hover">
+                    <h3 class="text-lg font-semibold text-foreground mb-4">Contribution Activity</h3>
+                    <!-- Simplified contribution grid -->
+                    <div class="space-y-2">
+                        <div class="flex space-x-1">
+                            <!-- @MAP: Generate contribution squares -->
+                            <div class="w-3 h-3 bg-muted rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary/30 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary/60 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary rounded-sm"></div>
+                            <div class="w-3 h-3 bg-muted rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary/30 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-muted rounded-sm"></div>
+                            <!-- @END_MAP -->
+                        </div>
+                        <div class="flex space-x-1">
+                            <div class="w-3 h-3 bg-primary/30 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-muted rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary/60 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary/30 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-muted rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary rounded-sm"></div>
+                        </div>
+                        <div class="flex space-x-1">
+                            <div class="w-3 h-3 bg-muted rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary/60 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-muted rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary/30 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary rounded-sm"></div>
+                            <div class="w-3 h-3 bg-primary/60 rounded-sm"></div>
+                            <div class="w-3 h-3 bg-muted rounded-sm"></div>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground text-sm mt-4">
+                        <!-- @FUNCTIONALITY: Real GitHub API integration for live contribution data -->
+                        Active contributor with consistent coding activity
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: GitHub Stats -->
+
+    <!-- @COMPONENT: Contact Section -->
+    <section id="contact" class="py-20 bg-secondary/50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">Get In Touch</h2>
+                    <p class="text-muted-foreground text-lg">
+                        Ready to bring your mobile app ideas to life? Let's collaborate!
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Information -->
+                    <div class="space-y-8">
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-foreground">Email</h3>
+                                    <p class="text-muted-foreground">ajiteshsinha2004@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-accent"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-foreground">Location</h3>
+                                    <p class="text-muted-foreground">Greater Noida, India</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center">
+                                    <i class="fab fa-github text-destructive"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-foreground">GitHub</h3>
+                                    <p class="text-muted-foreground">github.com/AjiteshSinha17</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <div class="pt-8">
+                            <h3 class="font-semibold text-foreground mb-4">Connect With Me</h3>
+                            <div class="flex space-x-4">
+                                <a href="https://linkedin.com/in/AjiteshSinha" class="w-12 h-12 bg-card rounded-lg border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://instagram.com/ajitesh.sinha18" class="w-12 h-12 bg-card rounded-lg border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://x.com/@Ajitsh11410" class="w-12 h-12 bg-card rounded-lg border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://youtube.com/@@ajiteshsinha8677" class="w-12 h-12 bg-card rounded-lg border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="bg-card rounded-xl p-8 border border-border">
+                        <form class="space-y-6" data-implementation="Form should integrate with email service or contact API">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-foreground mb-2">First Name</label>
+                                    <input type="text" id="firstName" class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all" placeholder="John" data-mock="true">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-foreground mb-2">Last Name</label>
+                                    <input type="text" id="lastName" class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all" placeholder="Doe" data-mock="true">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-foreground mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all" placeholder="john.doe@example.com" data-mock="true">
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-foreground mb-2">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all" placeholder="Project Collaboration" data-mock="true">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-foreground mb-2">Message</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all resize-none" placeholder="Tell me about your project..." data-mock="true"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:bg-primary/90 transition-all transform hover:scale-105" data-event="click:handleSubmit" data-implementation="Should validate form and send email">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Contact Section -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-card border-t border-border py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <span class="text-primary-foreground font-bold text-sm">AS</span>
+                        </div>
+                        <span class="font-semibold text-foreground">Ajitesh Sinha</span>
+                    </div>
+                    <p class="text-muted-foreground text-sm">
+                        Mobile App Developer passionate about creating innovative, secure, and user-friendly applications.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-foreground mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="#home" class="block text-muted-foreground hover:text-primary transition-colors text-sm">Home</a>
+                        <a href="#about" class="block text-muted-foreground hover:text-primary transition-colors text-sm">About</a>
+                        <a href="#projects" class="block text-muted-foreground hover:text-primary transition-colors text-sm">Projects</a>
+                        <a href="#contact" class="block text-muted-foreground hover:text-primary transition-colors text-sm">Contact</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-foreground mb-4">Technologies</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Flutter</span>
+                        <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs">Python</span>
+                        <span class="bg-destructive/10 text-destructive px-2 py-1 rounded text-xs">Firebase</span>
+                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">C++</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-border mt-8 pt-8 text-center">
+                <p class="text-muted-foreground text-sm">
+                    © 2025 Ajitesh Sinha. All rights reserved. Built with ❤️ using modern web technologies.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            mobileMenuBtn?.addEventListener('click', () => {
+                mobileNav.classList.add('active');
+            });
+            
+            mobileCloseBtn?.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+            
+            // Close mobile menu when clicking on nav links
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                });
+            });
+            
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            
+            themeToggle?.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                themeToggle.innerHTML = isDark 
+                    ? '<i class="fas fa-sun text-muted-foreground"></i>' 
+                    : '<i class="fas fa-moon text-muted-foreground"></i>';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                html.classList.add('dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun text-muted-foreground"></i>';
+            }
+            
+            // Project filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'bg-primary', 'text-primary-foreground');
+                        b.classList.add('text-muted-foreground');
+                    });
+                    btn.classList.add('active', 'bg-primary', 'text-primary-foreground');
+                    btn.classList.remove('text-muted-foreground');
+                    
+                    // Filter projects
+                    const filter = btn.dataset.filter;
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Initialize active filter
+            document.querySelector('.filter-btn.active').classList.add('bg-primary', 'text-primary-foreground');
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Scroll spy for navigation
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const top = section.offsetTop;
+                    const bottom = top + section.offsetHeight;
+                    const id = section.getAttribute('id');
+                    
+                    if (scrollPos >= top && scrollPos <= bottom) {
+                        document.querySelectorAll('nav a').forEach(link => {
+                            link.classList.remove('text-primary');
+                            link.classList.add('text-muted-foreground');
+                        });
+                        const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.remove('text-muted-foreground');
+                            activeLink.classList.add('text-primary');
+                        }
+                    }
+                });
+            });
+            
+            // Form submission handler
+            const contactForm = document.querySelector('form');
+            contactForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // TODO: Implement form submission logic with email service
+                alert('Thank you for your message! I\'ll get back to you soon.');
+            });
+            
+            // Add loading animations on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.card-hover').forEach(card => {
+                observer.observe(card);
+            });
+        })();
+    </script>
+</body>
+</html>

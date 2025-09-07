@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 import { useScrollToSection } from '@/hooks/use-scroll-to-section';
 import { Button } from '@/components/ui/button';
@@ -42,7 +43,7 @@ const SideNavigation: React.FC = () => {
   };
 
   return (
-    <nav className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col space-y-4">
+    <nav className="fixed right-6 top-6 z-50 flex flex-col space-y-4 items-end">
       {navigationItems.map((item) => (
         <div key={item.id} className="glassmorphism rounded-full p-1">
           <Tooltip>

@@ -1,0 +1,1030 @@
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajitesh Sinha - Mobile App Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    colors: {
+                        background: "var(--background)",
+                        foreground: "var(--foreground)",
+                        card: {
+                            DEFAULT: "var(--card)",
+                            foreground: "var(--card-foreground)",
+                        },
+                        popover: {
+                            DEFAULT: "var(--popover)",
+                            foreground: "var(--popover-foreground)",
+                        },
+                        primary: {
+                            DEFAULT: "var(--primary)",
+                            foreground: "var(--primary-foreground)",
+                        },
+                        secondary: {
+                            DEFAULT: "var(--secondary)",
+                            foreground: "var(--secondary-foreground)",
+                        },
+                        muted: {
+                            DEFAULT: "var(--muted)",
+                            foreground: "var(--muted-foreground)",
+                        },
+                        accent: {
+                            DEFAULT: "var(--accent)",
+                            foreground: "var(--accent-foreground)",
+                        },
+                        destructive: {
+                            DEFAULT: "var(--destructive)",
+                            foreground: "var(--destructive-foreground)",
+                        },
+                        border: "var(--border)",
+                        input: "var(--input)",
+                        ring: "var(--ring)",
+                    },
+                    fontFamily: {
+                        sans: ["var(--font-sans)"],
+                        mono: ["var(--font-mono)"],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'particle': 'particle 20s linear infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    }
+                },
+            }
+        };
+    </script>
+    
+    <style>
+        :root {
+            --background: hsl(0 0% 0%);
+            --foreground: hsl(210 40% 98%);
+            --card: hsl(222.2 84% 4.9%);
+            --card-foreground: hsl(210 40% 98%);
+            --popover: hsl(222.2 84% 4.9%);
+            --popover-foreground: hsl(210 40% 98%);
+            --primary: hsl(217.2 91.2% 59.8%);
+            --primary-foreground: hsl(222.2 84% 4.9%);
+            --secondary: hsl(217.2 32.6% 17.5%);
+            --secondary-foreground: hsl(210 40% 98%);
+            --muted: hsl(217.2 32.6% 17.5%);
+            --muted-foreground: hsl(215 20.2% 65.1%);
+            --accent: hsl(217.2 32.6% 17.5%);
+            --accent-foreground: hsl(210 40% 98%);
+            --destructive: hsl(0 62.8% 30.6%);
+            --destructive-foreground: hsl(210 40% 98%);
+            --border: hsl(217.2 32.6% 17.5%);
+            --input: hsl(217.2 32.6% 17.5%);
+            --ring: hsl(224.3 76.3% 94.1%);
+            --radius: 0.75rem;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes particle {
+            0% { transform: translateX(-100vw) rotate(0deg); }
+            100% { transform: translateX(100vw) rotate(360deg); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #3B82F6, #06B6D4);
+            border-radius: 50%;
+            animation: particle 20s linear infinite;
+        }
+
+        .particle:nth-child(2) { animation-delay: -2s; top: 20%; }
+        .particle:nth-child(3) { animation-delay: -4s; top: 40%; }
+        .particle:nth-child(4) { animation-delay: -6s; top: 60%; }
+        .particle:nth-child(5) { animation-delay: -8s; top: 80%; }
+
+        .geometric-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .progress-circle {
+            transform: rotate(-90deg);
+            transition: stroke-dasharray 1s ease-in-out;
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 560px;
+            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+            border-radius: 40px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .app-demo {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-background text-foreground font-sans">
+    <!-- Animated Background -->
+    <div class="geometric-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        
+        <div class="geometric-shape w-32 h-32 top-10 left-10" style="animation-delay: 0s;"></div>
+        <div class="geometric-shape w-24 h-24 top-1/4 right-20" style="animation-delay: 2s;"></div>
+        <div class="geometric-shape w-40 h-40 bottom-20 left-1/4" style="animation-delay: 4s;"></div>
+        <div class="geometric-shape w-28 h-28 bottom-1/3 right-10" style="animation-delay: 6s;"></div>
+    </div>
+
+    <!-- Fixed Navigation -->
+    <!-- @COMPONENT: NavigationBar [vertical navigation with icons] -->
+    <nav class="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 glassmorphism rounded-full p-4 space-y-6">
+        <a href="#home" class="block p-3 text-muted-foreground hover:text-primary transition-colors">
+            <i class="fas fa-home text-xl"></i>
+        </a>
+        <a href="#about" class="block p-3 text-muted-foreground hover:text-primary transition-colors">
+            <i class="fas fa-user text-xl"></i>
+        </a>
+        <a href="#skills" class="block p-3 text-muted-foreground hover:text-primary transition-colors">
+            <i class="fas fa-code text-xl"></i>
+        </a>
+        <a href="#projects" class="block p-3 text-muted-foreground hover:text-primary transition-colors">
+            <i class="fas fa-mobile-alt text-xl"></i>
+        </a>
+        <a href="#contact" class="block p-3 text-muted-foreground hover:text-primary transition-colors">
+            <i class="fas fa-envelope text-xl"></i>
+        </a>
+    </nav>
+    <!-- @END_COMPONENT: NavigationBar -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [main landing area with profile] -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative">
+        <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Profile Card -->
+            <div class="glassmorphism rounded-3xl p-8 text-center space-y-6 animate-float">
+                <div class="relative inline-block">
+                    <!-- GitHub profile image with real URL -->
+                    <img src="https://avatars.githubusercontent.com/u/89742421?v=4" 
+                         alt="Ajitesh Sinha Profile" 
+                         class="w-40 h-40 rounded-3xl mx-auto shadow-2xl border-4 border-primary/20" 
+                         data-bind="user.avatar">
+                </div>
+                
+                <div class="space-y-2">
+                    <h2 class="text-2xl font-bold" data-bind="user.name">Ajitesh Sinha</h2>
+                    <p class="text-primary font-medium" data-bind="user.title">Mobile App Developer</p>
+                </div>
+                
+                <div class="space-y-2 text-muted-foreground">
+                    <p data-bind="user.email">ajiteshsinha2004@gmail.com</p>
+                    <p data-bind="user.location">Greater Noida, Uttar Pradesh, India</p>
+                </div>
+                
+                <div class="flex justify-center space-x-4">
+                    <a href="https://github.com/AjiteshSinha17" 
+                       class="p-3 glassmorphism rounded-full hover:bg-primary/20 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ajitesh-sinha-501124295/" 
+                       class="p-3 glassmorphism rounded-full hover:bg-primary/20 transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+                
+                <button class="w-full bg-muted hover:bg-primary text-foreground hover:text-primary-foreground py-4 px-6 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2"
+                        data-event="click:handleHireMe">
+                    <i class="fas fa-envelope"></i>
+                    <span>HIRE ME!</span>
+                </button>
+            </div>
+            
+            <!-- Hero Content -->
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <p class="text-sm tracking-widest text-muted-foreground uppercase">INTRODUCE</p>
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
+                        Say Hi from <span class="text-primary">Ajitesh</span>,<br>
+                        <span class="text-primary">Mobile App Developer</span>
+                    </h1>
+                    <p class="text-lg text-muted-foreground max-w-lg">
+                        I design and code beautifully complex things simply and I love what I do. Just simple like that!
+                    </p>
+                </div>
+                
+                <div class="flex items-center space-x-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary">2+</div>
+                        <div class="text-sm text-muted-foreground">YEARS OF<br>EXPERIENCE</div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="w-20 h-20 border-2 border-primary rounded-full flex items-center justify-center animate-glow">
+                            <i class="fas fa-arrow-down text-primary text-xl"></i>
+                        </div>
+                        <div class="absolute -top-4 -right-4 text-xs text-muted-foreground transform -rotate-12">
+                            MY PROJECTS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- Skills Section -->
+    <!-- @COMPONENT: SkillsSection [technical skills with progress circles] -->
+    <section id="skills" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold">Technical <span class="text-primary">Skills</span></h2>
+                <p class="text-lg text-muted-foreground">A comprehensive overview of my technical expertise with proficiency levels</p>
+            </div>
+            
+            <!-- @MAP: skills.map(skill => ( -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="95, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">95%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">VS Code</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 95%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fab fa-flutter"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="95, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">95%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Dart</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 95%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fab fa-flutter"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">92%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Flutter</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 92%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">90%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Python</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 90%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">90%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Git</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 90%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="88, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">88%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">GitHub</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 88%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="88, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">88%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">MySQL</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 88%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="87, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">87%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">DSA</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 87%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fab fa-android"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">85%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Android Studio</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 85%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">85%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Firebase</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 85%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">85%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">C</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 85%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">80%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">C++</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 80%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">80%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Postman</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 80%</p>
+                    </div>
+                </div>
+
+                <div class="glassmorphism rounded-2xl p-6 text-center space-y-4 hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-3xl mb-2">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="relative w-20 h-20 mx-auto">
+                        <svg class="w-20 h-20 progress-circle" viewBox="0 0 36 36">
+                            <path class="stroke-muted opacity-30" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="stroke-primary" stroke-width="3" fill="none" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">75%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">Ethical Hacking</h3>
+                        <p class="text-sm text-muted-foreground">Proficiency: 75%</p>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SkillsSection -->
+
+    <!-- Projects Section -->
+    <!-- @COMPONENT: ProjectsSection [mobile app showcases with phone mockups] -->
+    <section id="projects" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold">Featured <span class="text-primary">Projects</span></h2>
+                <p class="text-lg text-muted-foreground">Mobile applications I've built with passion and precision</p>
+            </div>
+            
+            <!-- @MAP: projects.map(project => ( -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+                <!-- Shopping App -->
+                <div class="glassmorphism rounded-3xl p-8 text-center space-y-6 hover:scale-105 transition-transform duration-300">
+                    <div class="phone-mockup mx-auto">
+                        <div class="phone-screen">
+                            <div class="app-demo bg-gradient-to-br from-green-400 to-blue-500">
+                                <div class="text-center">
+                                    <i class="fas fa-shopping-cart text-4xl mb-4"></i>
+                                    <h3 class="text-xl font-bold">Shopping App</h3>
+                                    <p class="text-sm opacity-90">E-commerce Solution</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Shopping App</h4>
+                        <p class="text-muted-foreground text-sm mb-4">
+                            Full-featured e-commerce app with cart, payment processing, and user management
+                        </p>
+                        <a href="https://github.com/AjiteshSinha17/shopping-app" 
+                           class="text-primary hover:text-primary/80 font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recipe App -->
+                <div class="glassmorphism rounded-3xl p-8 text-center space-y-6 hover:scale-105 transition-transform duration-300">
+                    <div class="phone-mockup mx-auto">
+                        <div class="phone-screen">
+                            <div class="app-demo bg-gradient-to-br from-orange-400 to-red-500">
+                                <div class="text-center">
+                                    <i class="fas fa-utensils text-4xl mb-4"></i>
+                                    <h3 class="text-xl font-bold">Recipe App</h3>
+                                    <p class="text-sm opacity-90">Culinary Discovery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Recipe App</h4>
+                        <p class="text-muted-foreground text-sm mb-4">
+                            Discover and cook delicious recipes from around the world with step-by-step guides
+                        </p>
+                        <a href="https://github.com/AjiteshSinha17/recipe-app" 
+                           class="text-primary hover:text-primary/80 font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Expense Tracker -->
+                <div class="glassmorphism rounded-3xl p-8 text-center space-y-6 hover:scale-105 transition-transform duration-300">
+                    <div class="phone-mockup mx-auto">
+                        <div class="phone-screen">
+                            <div class="app-demo bg-gradient-to-br from-purple-400 to-pink-500">
+                                <div class="text-center">
+                                    <i class="fas fa-chart-pie text-4xl mb-4"></i>
+                                    <h3 class="text-xl font-bold">Expense Tracker</h3>
+                                    <p class="text-sm opacity-90">Financial Management</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Expense Tracker</h4>
+                        <p class="text-muted-foreground text-sm mb-4">
+                            Track expenses, set budgets, and visualize spending patterns with beautiful charts
+                        </p>
+                        <a href="https://github.com/AjiteshSinha17/expense-tracker" 
+                           class="text-primary hover:text-primary/80 font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Face Recognition App -->
+                <div class="glassmorphism rounded-3xl p-8 text-center space-y-6 hover:scale-105 transition-transform duration-300">
+                    <div class="phone-mockup mx-auto">
+                        <div class="phone-screen">
+                            <div class="app-demo bg-gradient-to-br from-cyan-400 to-blue-500">
+                                <div class="text-center">
+                                    <i class="fas fa-eye text-4xl mb-4"></i>
+                                    <h3 class="text-xl font-bold">Face Recognition</h3>
+                                    <p class="text-sm opacity-90">AI-Powered Security</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Face Recognition</h4>
+                        <p class="text-muted-foreground text-sm mb-4">
+                            Advanced facial recognition system using OpenCV and machine learning algorithms
+                        </p>
+                        <a href="https://github.com/AjiteshSinha17/face-recognition" 
+                           class="text-primary hover:text-primary/80 font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quiz App -->
+                <div class="glassmorphism rounded-3xl p-8 text-center space-y-6 hover:scale-105 transition-transform duration-300">
+                    <div class="phone-mockup mx-auto">
+                        <div class="phone-screen">
+                            <div class="app-demo bg-gradient-to-br from-yellow-400 to-orange-500">
+                                <div class="text-center">
+                                    <i class="fas fa-question-circle text-4xl mb-4"></i>
+                                    <h3 class="text-xl font-bold">Quiz App</h3>
+                                    <p class="text-sm opacity-90">Interactive Learning</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Quiz App</h4>
+                        <p class="text-muted-foreground text-sm mb-4">
+                            Interactive quiz application with multiple categories and real-time scoring
+                        </p>
+                        <a href="https://github.com/AjiteshSinha17/quiz-app" 
+                           class="text-primary hover:text-primary/80 font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bagify App -->
+                <div class="glassmorphism rounded-3xl p-8 text-center space-y-6 hover:scale-105 transition-transform duration-300">
+                    <div class="phone-mockup mx-auto">
+                        <div class="phone-screen">
+                            <div class="app-demo bg-gradient-to-br from-indigo-400 to-purple-500">
+                                <div class="text-center">
+                                    <i class="fas fa-shopping-bag text-4xl mb-4"></i>
+                                    <h3 class="text-xl font-bold">Bagify App</h3>
+                                    <p class="text-sm opacity-90">Bag Collection</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Bagify App</h4>
+                        <p class="text-muted-foreground text-sm mb-4">
+                            Stylish bag collection app with modern UI and seamless shopping experience
+                        </p>
+                        <a href="https://github.com/AjiteshSinha17/bagify-app" 
+                           class="text-primary hover:text-primary/80 font-medium">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+
+            <div class="text-center">
+                <a href="https://github.com/AjiteshSinha17?tab=repositories" 
+                   class="inline-flex items-center space-x-2 bg-primary hover:bg-primary/80 text-primary-foreground py-4 px-8 rounded-xl font-medium transition-all duration-300">
+                    <i class="fab fa-github"></i>
+                    <span>View All Projects on GitHub</span>
+                    <i class="fas fa-external-link-alt text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProjectsSection -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: AboutSection [detailed about information] -->
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                <h2 class="text-4xl lg:text-5xl font-bold">About <span class="text-primary">Me</span></h2>
+                
+                <div class="glassmorphism rounded-3xl p-8 space-y-6">
+                    <p class="text-lg leading-relaxed">
+                        🚀 Hey there! I'm <span class="text-primary font-semibold">Ajitesh Sinha</span> ✨
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-mobile-alt text-primary mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold">App Developer</h4>
+                                    <p class="text-muted-foreground text-sm">Passionate about building powerful, user-friendly Android and iOS applications.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-shield-alt text-primary mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold">Ethical Hacker</h4>
+                                    <p class="text-muted-foreground text-sm">Love exploring vulnerabilities and fortifying systems in Linux environments.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-cloud text-primary mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold">Cloud Computing</h4>
+                                    <p class="text-muted-foreground text-sm">Constantly expanding skills in DSA and Web Development.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-server text-primary mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold">Backend Development</h4>
+                                    <p class="text-muted-foreground text-sm">Mastering APIs, databases, and server-side logic.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <i class="fab fa-flutter text-primary mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold">Flutter Enthusiast</h4>
+                                    <p class="text-muted-foreground text-sm">Actively seeking collaborations and contributing to Dart packages.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-code text-primary mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold">Polyglot Coder</h4>
+                                    <p class="text-muted-foreground text-sm">Fluent in Python, Dart, C, and C++ with continuous learning.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [contact form with validation] -->
+    <section id="contact" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center space-y-4 mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold">Let's Work <span class="text-primary">Together!</span></h2>
+                    <p class="text-lg text-muted-foreground">Ready to bring your mobile app ideas to life?</p>
+                    <div class="text-xl text-primary font-medium" data-bind="contact.email">ajiteshsinha2004@gmail.com</div>
+                    <a href="#" class="text-primary hover:text-primary/80 font-medium">Resume Here</a>
+                </div>
+                
+                <div class="glassmorphism rounded-3xl p-8">
+                    <!-- @STATE: formData:object = {fullName: '', email: '', phone: '', subject: '', budget: '', message: ''} -->
+                    <form class="space-y-6" data-event="submit:handleContactSubmit">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    FULL NAME <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" 
+                                       placeholder="Your Full Name" 
+                                       required
+                                       data-bind="formData.fullName"
+                                       class="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    EMAIL <span class="text-red-500">*</span>
+                                </label>
+                                <input type="email" 
+                                       placeholder="Your email address" 
+                                       required
+                                       data-bind="formData.email"
+                                       class="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    PHONE (optional)
+                                </label>
+                                <input type="tel" 
+                                       placeholder="Your number phone" 
+                                       data-bind="formData.phone"
+                                       class="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">
+                                    SUBJECT <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" 
+                                       placeholder="Enter subject" 
+                                       required
+                                       data-bind="formData.subject"
+                                       class="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">
+                                YOUR BUDGET (optional)
+                            </label>
+                            <input type="text" 
+                                   placeholder="A range budget for your project" 
+                                   data-bind="formData.budget"
+                                   class="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">
+                                MESSAGE
+                            </label>
+                            <textarea placeholder="Write your message here ..." 
+                                      rows="6"
+                                      data-bind="formData.message"
+                                      class="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300 resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-primary hover:bg-primary/80 text-primary-foreground py-4 px-6 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2"
+                                data-event="click:handleSubmit">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Mobile Menu Toggle (Hidden on desktop) -->
+    <button class="fixed top-4 right-4 z-50 lg:hidden glassmorphism rounded-full p-3" 
+            data-event="click:toggleMobileMenu">
+        <i class="fas fa-bars text-xl"></i>
+    </button>
+
+    <script>
+        (function() {
+            // Animated background particles
+            function createParticles() {
+                const particleContainer = document.querySelector('.geometric-bg');
+                
+                setInterval(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.left = '-10px';
+                    particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                    
+                    particleContainer.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 25000);
+                }, 2000);
+            }
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Initialize animations on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                createParticles();
+
+                // Animate progress circles on scroll
+                const progressCircles = document.querySelectorAll('.progress-circle path:last-child');
+                
+                const observerOptions = {
+                    threshold: 0.5,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const path = entry.target;
+                            const dashArray = path.getAttribute('stroke-dasharray');
+                            path.style.strokeDasharray = '0, 100';
+                            
+                            setTimeout(() => {
+                                path.style.strokeDasharray = dashArray;
+                            }, 500);
+                        }
+                    });
+                }, observerOptions);
+
+                progressCircles.forEach(circle => {
+                    observer.observe(circle);
+                });
+
+                // Active navigation highlighting
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const activeId = entry.target.getAttribute('id');
+                            navLinks.forEach(link => {
+                                const linkId = link.getAttribute('href').substring(1);
+                                if (linkId === activeId) {
+                                    link.classList.add('text-primary');
+                                    link.classList.remove('text-muted-foreground');
+                                } else {
+                                    link.classList.remove('text-primary');
+                                    link.classList.add('text-muted-foreground');
+                                }
+                            });
+                        }
+                    });
+                }, { threshold: 0.6 });
+
+                sections.forEach(section => {
+                    sectionObserver.observe(section);
+                });
+            });
+
+            // TODO: Implement form submission logic
+            // TODO: Implement hire me button functionality
+            // TODO: Implement mobile menu toggle
+            // TODO: Add form validation
+            // TODO: Integrate with email service for contact form
+        })();
+    </script>
+</body>
+</html>
