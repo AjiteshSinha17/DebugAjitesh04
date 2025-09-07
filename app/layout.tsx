@@ -1,6 +1,6 @@
 import "./globals.css";
 export const metadata = {
-  title: "Mobile Dev Portfolio",
+  title: "Ajitesh Sinha",
   description: "Portfolio showcasing mobile development projects",
 };
 
